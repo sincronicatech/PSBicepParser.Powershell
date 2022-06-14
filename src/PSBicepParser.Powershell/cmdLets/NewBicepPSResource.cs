@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace BicepParser.Powershell;
 
-[Cmdlet(VerbsCommon.New, "BicepResource")]
-[OutputType(typeof(BicepResource))]
+[Cmdlet(VerbsCommon.New, "PSBicepResource")]
+[OutputType(typeof(PSBicepResource))]
 public class NewBicepResource : PSCmdlet
 {
     [Parameter(
@@ -44,7 +44,7 @@ public class NewBicepResource : PSCmdlet
         if (Identifier == null) { throw new ArgumentNullException(nameof(Identifier)); }
         if (ResourceType == null) { throw new ArgumentNullException(nameof(ResourceType)); }
         if (Name == null) { throw new ArgumentNullException(nameof(Name)); }
-        var resource = new BicepResource(Identifier, ResourceType, Name);
+        var resource = new PSBicepResource(Identifier, ResourceType, Name);
         if (Parent != null)
         {
             resource.Parent = Parent;

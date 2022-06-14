@@ -4,8 +4,8 @@ using System.Management.Automation.Runspaces;
 
 namespace BicepParser.Powershell;
 
-[Cmdlet(VerbsCommon.New, "BicepTargetScope")]
-[OutputType(typeof(BicepTargetScope))]
+[Cmdlet(VerbsCommon.New, "PSBicepTargetScope")]
+[OutputType(typeof(PSBicepTargetScope))]
 public class NewBicepTargetScope : PSCmdlet
 {
     [Parameter(
@@ -20,7 +20,7 @@ public class NewBicepTargetScope : PSCmdlet
         {
             throw new ArgumentNullException(nameof(Scope));
         }
-        WriteObject(new BicepTargetScope(Scope));
+        WriteObject(new PSBicepTargetScope(Scope));
     }
 
 }

@@ -2,9 +2,9 @@ using System;
 
 namespace BicepParser.Powershell;
 
-public class BicepTargetScope:IBicepElement
+public class PSBicepTargetScope:IPSBicepElement
 {
-    public BicepTargetScope(string targetScope)
+    public PSBicepTargetScope(string targetScope)
     {
         Scope = targetScope;
         targetScopeProperty = targetScope;

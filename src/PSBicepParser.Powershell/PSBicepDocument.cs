@@ -4,13 +4,13 @@ using System.Text;
 namespace BicepParser.Powershell;
 
 
-public class BicepDocument:IBicepElement{
-    public BicepTargetScope? TargetScope {get;set;}
-    public BicepParam[] Params {get; set;} = new BicepParam[0];
-    public BicepResource[] Resources {get; set;} = new BicepResource[0];
+public class PSBicepDocument:IPSBicepElement{
+    public PSBicepTargetScope? TargetScope {get;set;}
+    public PSBicepParam[] Params {get; set;} = new PSBicepParam[0];
+    public PSBicepResource[] Resources {get; set;} = new PSBicepResource[0];
 
-    public BicepModule[] Modules {get; set; } = new BicepModule[0];
-    public BicepOutput[] Outputs {get; set;} = new BicepOutput[0];
+    public PSBicepModule[] Modules {get; set; } = new PSBicepModule[0];
+    public PSBicepOutput[] Outputs {get; set;} = new PSBicepOutput[0];
 
     public string ConvertToDocument()
     {

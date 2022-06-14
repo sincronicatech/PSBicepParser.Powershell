@@ -2,9 +2,9 @@ using System.Management.Automation;
 
 namespace BicepParser.Powershell;
 
-public class BicepOutput: IBicepElement
+public class PSBicepOutput: IPSBicepElement
 {
-    public BicepOutput(string identifier, string type, object value)
+    public PSBicepOutput(string identifier, string type, object value)
     {
         Identifier = identifier;
         Type = type;
@@ -17,6 +17,6 @@ public class BicepOutput: IBicepElement
 
     public string ConvertToDocument()
     {
-        return $"output {Identifier} {Type} = {BicepUtils.Convert(Value)}";
+        return $"output {Identifier} {Type} = {PSBicepUtils.Convert(Value)}";
     }
 }

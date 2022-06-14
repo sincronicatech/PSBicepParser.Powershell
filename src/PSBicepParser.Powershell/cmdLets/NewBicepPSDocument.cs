@@ -4,13 +4,13 @@ using System.Management.Automation.Runspaces;
 
 namespace BicepParser.Powershell;
 
-[Cmdlet(VerbsCommon.New, "BicepDocument")]
-[OutputType(typeof(BicepDocument))]
+[Cmdlet(VerbsCommon.New, "PSBicepDocument")]
+[OutputType(typeof(PSBicepDocument))]
 public class NewBicepDocument : PSCmdlet
 {
 
     protected override void ProcessRecord()
     {
-        WriteObject(new BicepDocument());
+        WriteObject(new PSBicepDocument());
     }
 }

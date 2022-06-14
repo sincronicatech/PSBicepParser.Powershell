@@ -3,9 +3,9 @@ using Antlr4.Runtime.Tree;
 
 namespace BicepParser.Powershell
 {
-    internal class BicepResourceVisitor:bicepParserBaseVisitor<BicepResource>
+    internal class BicepResourceVisitor:bicepParserBaseVisitor<PSBicepResource>
     {
-        public override BicepResource VisitResource([NotNull] bicepParser.ResourceContext context)
+        public override PSBicepResource VisitResource([NotNull] bicepParser.ResourceContext context)
         {
             var valueParser = new BicepValueVisitor();
             var resourceObject = (System.Collections.Hashtable)valueParser.VisitObjectValue(context.objectValue());
@@ -13,7 +13,7 @@ namespace BicepParser.Powershell
             var name = (string)resourceObject["name"];
             resourceObject.Remove("Name");
 
-            var resource = new BicepResource(context.identifier().GetText(),context.resourceType().GetText(), name);
+            var resource = new PSBicepResource(context.identifier().GetText(),context.resourceType().GetText(), name);
             if(resourceObject.ContainsKey("parent")){
                 var parent = (string)resourceObject["parent"];
                 resourceObject.Remove("parent");

@@ -3,12 +3,12 @@ using Antlr4.Runtime.Tree;
 
 namespace BicepParser.Powershell
 {
-    internal class BicepParamVisitor : bicepParserBaseVisitor<BicepParam>
+    internal class BicepParamVisitor : bicepParserBaseVisitor<PSBicepParam>
     {
-        public override BicepParam VisitParam([NotNull] bicepParser.ParamContext context)
+        public override PSBicepParam VisitParam([NotNull] bicepParser.ParamContext context)
         {
 
-            var param =  new BicepParam(context.identifier().GetText(),context.type().GetText());
+            var param =  new PSBicepParam(context.identifier().GetText(),context.type().GetText());
             if(context.value()!=null){
                 var valueVisitor = new BicepValueVisitor();
                 param.DefaultValue = valueVisitor.VisitValue(context.value());

@@ -5,35 +5,35 @@ The module aims to parse a Bicep file to a Powershell object and viceversa to si
 
 The module exposes the following cmdLets:
 
-- ### New-BicepDocument
+- ### New-PSBicepDocument
 
 Creates a new BicepDocument Powershell object
 
-- ### New-BicepModule
+- ### New-PSBicepModule
 
 Creates a new BicepModule Powershell object that can be assigned to a BicepDocument
 
-- ### New-BicepOutput
+- ### New-PSBicepOutput
 
 Creates a new BicepOutput Powershell object that can be assigned to a BicepDocument
 
-- ### New-BicepParam
+- ### New-PSBicepParam
 
 Creates a new BicepParam Powershell object that can be assigned to a BicepDocument
 
-- ### New-BicepResource
+- ### New-PSBicepResource
 
 Creates a new BicepResource Powershell object that can be assigned to a BicepDocument
 
-- ### New-BicepTargetScope
+- ### New-PSBicepTargetScope
 
 Creates a new BicepTargetScope Powershell object that can be assigned to a BicepDocument
 
-- ### ConvertFrom-BicepDocument
+- ### ConvertFrom-PSBicepDocument
 
 Convert a string to a BicepDocument Powershell object.
 
-- ### ConvertTo-BicepDocument
+- ### ConvertTo-PSBicepDocument
 
 Convert a BicepDocument Powershell object to a string that represents the content of a Bicep file.
 
@@ -56,14 +56,14 @@ $request = Invoke-WebRequest -Uri $url
 $content = $request.content
 
 # Convert to a Bicep Powershell object
-$bicepDocument = $content|convertfrom-bicepDocument
+$bicepDocument = $content|convertfrom-PSBicepDocument
 
 $bicepDocument
 
 # Add a new Bicep Param
-$paramnew = new-BicepParam -Identifier 'theParam' -Type 'string'
+$paramnew = new-PSBicepParam -Identifier 'theParam' -Type 'string'
 $bicepDocument.Params+=$paramnew
 
 # Convert to Bicep Document
-$bicepDocument|convertto-BicepDocument
+$bicepDocument|convertto-PSBicepDocument
 ```

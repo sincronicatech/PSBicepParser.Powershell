@@ -1,6 +1,6 @@
 namespace BicepParser.Powershell;
 
-internal interface IBicepElement
+internal interface IPSBicepElement
 {
     string ConvertToDocument();
 }

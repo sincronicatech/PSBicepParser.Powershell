@@ -2,9 +2,9 @@ using System.Collections;
 
 namespace BicepParser.Powershell;
 
-public class BicepModule:IBicepElement
+public class PSBicepModule:IPSBicepElement
 {
-    public BicepModule(string identifier, string modulePath, string name)
+    public PSBicepModule(string identifier, string modulePath, string name)
     {
         Identifier = identifier;
         ModulePath = modulePath;
@@ -34,7 +34,7 @@ public class BicepModule:IBicepElement
         var newHashtable = (Hashtable)Attributes.Clone();
         newHashtable.Add("name", Name);
         
-        return $"module {Identifier} {ModulePath} = {BicepUtils.Convert(newHashtable)}";
+        return $"module {Identifier} {ModulePath} = {PSBicepUtils.Convert(newHashtable)}";
     }
 
 }

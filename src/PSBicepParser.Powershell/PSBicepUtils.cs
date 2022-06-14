@@ -6,9 +6,9 @@ using Antlr4.Runtime;
 
 namespace BicepParser.Powershell;
 
-internal class BicepUtils
+internal class PSBicepUtils
 {
-    internal static BicepDocument Parse(string inputObject)
+    internal static PSBicepDocument Parse(string inputObject)
     {
         AntlrInputStream inputStream = new AntlrInputStream(inputObject);
 

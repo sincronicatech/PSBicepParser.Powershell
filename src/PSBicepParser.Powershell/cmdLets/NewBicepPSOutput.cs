@@ -4,10 +4,11 @@ using System.Management.Automation.Runspaces;
 
 namespace BicepParser.Powershell;
 
-[Cmdlet(VerbsCommon.New, "BicepParam")]
-[OutputType(typeof(BicepParam))]
-public class NewBicepParam : PSCmdlet
+[Cmdlet(VerbsCommon.New, "PSBicepOutput")]
+[OutputType(typeof(PSBicepOutput))]
+public class NewBicepOutput : PSCmdlet
 {
+
     [Parameter(
         Mandatory = true,
         Position = 0)]
@@ -17,27 +18,26 @@ public class NewBicepParam : PSCmdlet
         Mandatory = true,
         Position = 1)]
     [ValidateSet("string", "bool", "int", "array", "object")]
-    public string? Type { get; set; }
+    public string? Type { get; set; } = "Dog";
 
 
     [Parameter(
-        Mandatory = false,
+        Mandatory = true,
         Position = 2)]
-    public PSObject? DefaultValue { get; set; }
+    public PSObject? Value { get; set; }
 
     protected override void ProcessRecord()
     {
         if (Identifier == null) { throw new ArgumentNullException(nameof(Identifier)); }
         if (Type == null) { throw new ArgumentNullException(nameof(Type)); }
-        var paramValue = new BicepParam(Identifier, Type);
-        if (DefaultValue != null)
-        {
-            paramValue.DefaultValue = DefaultValue;
-        }
+        if (Value == null) { throw new ArgumentNullException(nameof(Value)); }
 
-        WriteObject(paramValue);
+        var output = new PSBicepOutput(Identifier, Type,Value);
+
+        WriteObject(
+            output
+        );
     }
-
 }
 
 

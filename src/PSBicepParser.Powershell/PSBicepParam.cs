@@ -1,9 +1,9 @@
 using System.Management.Automation;
 
 namespace BicepParser.Powershell;
-public class BicepParam:IBicepElement
+public class PSBicepParam:IPSBicepElement
 {
-    public BicepParam(string identifier, string type)
+    public PSBicepParam(string identifier, string type)
     {
         Identifier = identifier;
         Type = type;
@@ -24,7 +24,7 @@ public class BicepParam:IBicepElement
         }
         toReturn += $"param {Identifier} {Type}";
         if(DefaultValue!= null){
-            toReturn += $" = {BicepUtils.Convert(DefaultValue)}";
+            toReturn += $" = {PSBicepUtils.Convert(DefaultValue)}";
         }
         return toReturn;
     }

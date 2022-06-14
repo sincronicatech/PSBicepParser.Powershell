@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace BicepParser.Powershell;
 
-public class BicepResource:IBicepElement
+public class PSBicepResource:IPSBicepElement
 {
-    public BicepResource(string identifier, string resourceType, string name)
+    public PSBicepResource(string identifier, string resourceType, string name)
     {
         Identifier = identifier;
         ResourceType = resourceType;
@@ -48,7 +48,7 @@ public class BicepResource:IBicepElement
         newHashtable.Add("dependsOn", DependsOn);
         
         string existing = IsExisting ? "existing " : "";
-        return $"resource {Identifier} {ResourceType} {existing}= {BicepUtils.Convert(newHashtable)}";
+        return $"resource {Identifier} {ResourceType} {existing}= {PSBicepUtils.Convert(newHashtable)}";
     }
 
 }

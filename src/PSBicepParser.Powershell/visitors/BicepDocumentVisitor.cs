@@ -5,11 +5,11 @@ using Antlr4.Runtime.Tree;
 
 namespace BicepParser.Powershell;
 
-public class BicepDocumentVisitor : bicepParserBaseVisitor<BicepDocument>
+public class BicepDocumentVisitor : bicepParserBaseVisitor<PSBicepDocument>
 {
-    public override BicepDocument VisitBicep([NotNull] bicepParser.BicepContext context)
+    public override PSBicepDocument VisitBicep([NotNull] bicepParser.BicepContext context)
     {
-        var document = new BicepDocument();
+        var document = new PSBicepDocument();
 
         var targetScopeVisitor = new BicepTargetScopeVisitor();
         if(context.targetScope() != null)
@@ -18,7 +18,7 @@ public class BicepDocumentVisitor : bicepParserBaseVisitor<BicepDocument>
         }
 
         var paramsContext = context.param();
-        document.Params = new BicepParam[paramsContext.Length];
+        document.Params = new PSBicepParam[paramsContext.Length];
         var paramVisitor = new BicepParamVisitor();
         for (int walker = 0; walker < paramsContext.Length; walker++)
         {
@@ -26,7 +26,7 @@ public class BicepDocumentVisitor : bicepParserBaseVisitor<BicepDocument>
         }
 
         var resourcesContext = context.resource();
-        document.Resources = new BicepResource[resourcesContext.Length];
+        document.Resources = new PSBicepResource[resourcesContext.Length];
         var resourceVisitor = new BicepResourceVisitor();
         for (int walker = 0; walker < resourcesContext.Length; walker++)
         {
@@ -34,7 +34,7 @@ public class BicepDocumentVisitor : bicepParserBaseVisitor<BicepDocument>
         }
 
         var modulesContext = context.module();
-        document.Modules = new BicepModule[modulesContext.Length];
+        document.Modules = new PSBicepModule[modulesContext.Length];
         var moduleVisitor = new BicepModuleVisitor();
         for (int walker = 0; walker < modulesContext.Length; walker++)
         {
@@ -42,7 +42,7 @@ public class BicepDocumentVisitor : bicepParserBaseVisitor<BicepDocument>
         }
 
         var outputsContext = context.output();
-        document.Outputs = new BicepOutput[outputsContext.Length];
+        document.Outputs = new PSBicepOutput[outputsContext.Length];
         var outputVisitor = new BicepOutputVisitor();
         for (int walker = 0; walker < outputsContext.Length; walker++)
         {

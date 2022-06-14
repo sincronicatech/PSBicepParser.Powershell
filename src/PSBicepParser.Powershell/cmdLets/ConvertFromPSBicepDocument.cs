@@ -4,8 +4,8 @@ using System.Management.Automation.Runspaces;
 
 namespace BicepParser.Powershell;
 
-[Cmdlet(VerbsData.ConvertFrom, "BicepDocument")]
-[OutputType(typeof(BicepDocument))]
+[Cmdlet(VerbsData.ConvertFrom, "PSBicepDocument")]
+[OutputType(typeof(PSBicepDocument))]
 public class ConvertFromBicepDocument : PSCmdlet
 {
     [Parameter(
@@ -20,7 +20,7 @@ public class ConvertFromBicepDocument : PSCmdlet
     protected override void ProcessRecord()
     {
         if (InputObject == null) { throw new ArgumentNullException(nameof(InputObject)); }
-        BicepDocument document = BicepUtils.Parse(InputObject);
+        PSBicepDocument document = PSBicepUtils.Parse(InputObject);
         WriteObject(document);
 
     }

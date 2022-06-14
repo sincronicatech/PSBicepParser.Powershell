@@ -3,9 +3,9 @@ using Antlr4.Runtime.Tree;
 
 namespace BicepParser.Powershell
 {
-    internal class BicepModuleVisitor:bicepParserBaseVisitor<BicepModule>
+    internal class BicepModuleVisitor:bicepParserBaseVisitor<PSBicepModule>
     {
-        public override BicepModule VisitModule([NotNull] bicepParser.ModuleContext context)
+        public override PSBicepModule VisitModule([NotNull] bicepParser.ModuleContext context)
         {
             var valueParser = new BicepValueVisitor();
             var moduleObject = (System.Collections.Hashtable)valueParser.VisitObjectValue(context.objectValue());
@@ -13,7 +13,7 @@ namespace BicepParser.Powershell
             var name = (string)moduleObject["name"];
             moduleObject.Remove("Name");
             
-            var module = new BicepModule(context.identifier().GetText(),context.modulePath().GetText(), name);
+            var module = new PSBicepModule(context.identifier().GetText(),context.modulePath().GetText(), name);
             
             module.Attributes=moduleObject;
             return module;

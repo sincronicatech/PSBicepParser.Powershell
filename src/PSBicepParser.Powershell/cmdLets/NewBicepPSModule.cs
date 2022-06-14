@@ -4,8 +4,8 @@ using System.Management.Automation.Runspaces;
 
 namespace BicepParser.Powershell;
 
-    [Cmdlet(VerbsCommon.New, "BicepModule")]
-[OutputType(typeof(BicepModule))]
+    [Cmdlet(VerbsCommon.New, "PSBicepModule")]
+[OutputType(typeof(PSBicepModule))]
 public class NewBicepModule : PSCmdlet
 {
     [Parameter(
@@ -29,7 +29,7 @@ public class NewBicepModule : PSCmdlet
         if (Identifier == null) { throw new ArgumentNullException(nameof(Identifier)); }
         if (ModulePath == null) { throw new ArgumentNullException(nameof(ModulePath)); }
         if (Name == null) { throw new ArgumentNullException(nameof(Name)); }
-        var module = new BicepModule(Identifier, ModulePath, Name);
+        var module = new PSBicepModule(Identifier, ModulePath, Name);
 
     }
 

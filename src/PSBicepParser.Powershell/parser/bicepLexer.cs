@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Users\DanieleFrancioni\OneDrive - Binarydea\Code\Sincronica\powershell-bicep-converter\src\BicepGrammar\bicepLexer.g4 by ANTLR 4.10.1
+// Generated from C:\Users\DanieleFrancioni\OneDrive - Binarydea\Code\Sincronica\powershell-PSBicep-converter\src\BicepGrammar\bicepLexer.g4 by ANTLR 4.10.1
 
 // Unreachable code detected
 #pragma warning disable 0162
