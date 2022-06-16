@@ -6,7 +6,7 @@ namespace BicepParser.Powershell;
 
 [Cmdlet(VerbsData.ConvertFrom, "PSBicepDocument")]
 [OutputType(typeof(PSBicepDocument))]
-public class ConvertFromBicepDocument : PSCmdlet
+public class ConvertFromPSBicepDocument : PSCmdlet
 {
     [Parameter(
         Mandatory = true,

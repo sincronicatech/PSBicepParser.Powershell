@@ -65,8 +65,8 @@ stringValue: OPEN_STRING ( ENTER_INTERPOLATION value CLOSEGRAPH | TEXT )* CLOSE_
 boolValue: BOOLEAN;
 numberValue: NUMBER;
 
-arrayValue: OPENSQUARE value+ CLOSESQUARE ;
-objectValue: OPENGRAPH property+ CLOSEGRAPH ;
+arrayValue: OPENSQUARE value* CLOSESQUARE ;
+objectValue: OPENGRAPH property* CLOSEGRAPH ;
 
 property: propertyName COLON value ;
 propertyName: IDENTIFIER|stringValue;

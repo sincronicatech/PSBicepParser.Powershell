@@ -21,5 +21,5 @@ $bicepGrammar = Get-Item "./bicepParser.g4"
 java --class-path $antlrJarFile org.antlr.v4.Tool -Dlanguage=CSharp $bicepLexerGrammar.FullName -o ./GeneratedCode -no-listener -no-visitor
 java --class-path $antlrJarFile org.antlr.v4.Tool -Dlanguage=CSharp $bicepGrammar.FullName -o ./GeneratedCode -visitor -no-listener
 
-remove-item ../BicepParser.Powershell/parser/*
-Move-Item ./GeneratedCode/*.cs ../BicepParser.Powershell/parser -Force
+remove-item ../PSBicepParser.Powershell/parser/*
+Move-Item ./GeneratedCode/*.cs ../PSBicepParser.Powershell/parser -Force
