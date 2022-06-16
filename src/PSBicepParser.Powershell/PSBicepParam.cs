@@ -1,7 +1,7 @@
 using System.Management.Automation;
 
 namespace BicepParser.Powershell;
-public class PSBicepParam:IPSBicepElement
+public class PSBicepParam:PSBicepElementBase
 {
     public PSBicepParam(string identifier, string type)
     {
@@ -15,7 +15,7 @@ public class PSBicepParam:IPSBicepElement
 
     public string[] Decorators { get; internal set; } = new string[0];
 
-    public string ConvertToDocument()
+    public override string ConvertToDocument()
     { 
         string toReturn="";
         foreach(var decorator in Decorators)

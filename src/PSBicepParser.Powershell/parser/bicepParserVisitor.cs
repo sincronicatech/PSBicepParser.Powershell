@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+// Generated from C:\Users\DanieleFrancioni\OneDrive - Binarydea\Code\Sincronica\powershell-bicep-converter\src\BicepGrammar\bicepParser.g4 by ANTLR 4.10.1
+
 // Unreachable code detected
 #pragma warning disable 0162
 // The variable '...' is assigned but its value is never used
@@ -114,11 +116,23 @@ public interface IbicepParserVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitValueExpression([NotNull] bicepParser.ValueExpressionContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="bicepParser.variable"/>.
+	/// Visit a parse tree produced by <see cref="bicepParser.memberExpression"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	Result VisitVariable([NotNull] bicepParser.VariableContext context);
+	Result VisitMemberExpression([NotNull] bicepParser.MemberExpressionContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="bicepParser.member"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitMember([NotNull] bicepParser.MemberContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="bicepParser.reference"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitReference([NotNull] bicepParser.ReferenceContext context);
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="bicepParser.function"/>.
 	/// </summary>

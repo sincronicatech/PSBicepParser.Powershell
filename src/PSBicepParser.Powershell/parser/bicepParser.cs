@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+// Generated from C:\Users\DanieleFrancioni\OneDrive - Binarydea\Code\Sincronica\powershell-bicep-converter\src\BicepGrammar\bicepParser.g4 by ANTLR 4.10.1
+
 // Unreachable code detected
 #pragma warning disable 0162
 // The variable '...' is assigned but its value is never used
@@ -44,15 +46,16 @@ public partial class bicepParser : Parser {
 		RULE_bicep = 0, RULE_module = 1, RULE_output = 2, RULE_targetScope = 3, 
 		RULE_scope = 4, RULE_param = 5, RULE_decorator = 6, RULE_identifier = 7, 
 		RULE_type = 8, RULE_resource = 9, RULE_resourceType = 10, RULE_modulePath = 11, 
-		RULE_value = 12, RULE_valueExpression = 13, RULE_variable = 14, RULE_function = 15, 
-		RULE_functionParameter = 16, RULE_stringValue = 17, RULE_boolValue = 18, 
-		RULE_numberValue = 19, RULE_arrayValue = 20, RULE_objectValue = 21, RULE_property = 22, 
-		RULE_propertyName = 23;
+		RULE_value = 12, RULE_valueExpression = 13, RULE_memberExpression = 14, 
+		RULE_member = 15, RULE_reference = 16, RULE_function = 17, RULE_functionParameter = 18, 
+		RULE_stringValue = 19, RULE_boolValue = 20, RULE_numberValue = 21, RULE_arrayValue = 22, 
+		RULE_objectValue = 23, RULE_property = 24, RULE_propertyName = 25;
 	public static readonly string[] ruleNames = {
 		"bicep", "module", "output", "targetScope", "scope", "param", "decorator", 
 		"identifier", "type", "resource", "resourceType", "modulePath", "value", 
-		"valueExpression", "variable", "function", "functionParameter", "stringValue", 
-		"boolValue", "numberValue", "arrayValue", "objectValue", "property", "propertyName"
+		"valueExpression", "memberExpression", "member", "reference", "function", 
+		"functionParameter", "stringValue", "boolValue", "numberValue", "arrayValue", 
+		"objectValue", "property", "propertyName"
 	};
 
 	private static readonly string[] _LiteralNames = {
@@ -136,6 +139,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_bicep; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterBicep(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitBicep(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBicep(this);
@@ -151,46 +164,46 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 49;
+			State = 53;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==TARGETSCOPE) {
 				{
-				State = 48;
+				State = 52;
 				targetScope();
 				}
 			}
 
-			State = 55;
+			State = 59;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			do {
 				{
-				State = 55;
+				State = 59;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
 				case RESOURCE:
 					{
-					State = 51;
+					State = 55;
 					resource();
 					}
 					break;
 				case PARAM:
 				case ET:
 					{
-					State = 52;
+					State = 56;
 					param();
 					}
 					break;
 				case MODULE:
 					{
-					State = 53;
+					State = 57;
 					module();
 					}
 					break;
 				case OUTPUT:
 					{
-					State = 54;
+					State = 58;
 					output();
 					}
 					break;
@@ -198,7 +211,7 @@ public partial class bicepParser : Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				State = 57;
+				State = 61;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << PARAM) | (1L << RESOURCE) | (1L << MODULE) | (1L << OUTPUT) | (1L << ET))) != 0) );
@@ -233,6 +246,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_module; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterModule(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitModule(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitModule(this);
@@ -247,15 +270,15 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 59;
-			Match(MODULE);
-			State = 60;
-			identifier();
-			State = 61;
-			modulePath();
-			State = 62;
-			Match(EQUAL);
 			State = 63;
+			Match(MODULE);
+			State = 64;
+			identifier();
+			State = 65;
+			modulePath();
+			State = 66;
+			Match(EQUAL);
+			State = 67;
 			objectValue();
 			}
 		}
@@ -288,6 +311,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_output; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterOutput(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitOutput(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitOutput(this);
@@ -302,15 +335,15 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 65;
-			Match(OUTPUT);
-			State = 66;
-			identifier();
-			State = 67;
-			type();
-			State = 68;
-			Match(EQUAL);
 			State = 69;
+			Match(OUTPUT);
+			State = 70;
+			identifier();
+			State = 71;
+			type();
+			State = 72;
+			Match(EQUAL);
+			State = 73;
 			value();
 			}
 		}
@@ -337,6 +370,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_targetScope; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterTargetScope(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitTargetScope(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitTargetScope(this);
@@ -351,11 +394,11 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 71;
+			State = 75;
 			Match(TARGETSCOPE);
-			State = 72;
+			State = 76;
 			Match(EQUAL);
-			State = 73;
+			State = 77;
 			scope();
 			}
 		}
@@ -380,6 +423,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_scope; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterScope(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitScope(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitScope(this);
@@ -394,7 +447,7 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 75;
+			State = 79;
 			stringValue();
 			}
 		}
@@ -433,6 +486,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_param; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterParam(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitParam(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitParam(this);
@@ -448,34 +511,34 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 80;
+			State = 84;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==ET) {
 				{
 				{
-				State = 77;
+				State = 81;
 				decorator();
 				}
 				}
-				State = 82;
+				State = 86;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 83;
+			State = 87;
 			Match(PARAM);
-			State = 84;
-			identifier();
-			State = 85;
-			type();
 			State = 88;
+			identifier();
+			State = 89;
+			type();
+			State = 92;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==EQUAL) {
 				{
-				State = 86;
+				State = 90;
 				Match(EQUAL);
-				State = 87;
+				State = 91;
 				value();
 				}
 			}
@@ -504,6 +567,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_decorator; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterDecorator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitDecorator(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitDecorator(this);
@@ -518,9 +591,9 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 90;
+			State = 94;
 			Match(ET);
-			State = 91;
+			State = 95;
 			valueExpression();
 			}
 		}
@@ -543,6 +616,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_identifier; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterIdentifier(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitIdentifier(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitIdentifier(this);
@@ -557,7 +640,7 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 93;
+			State = 97;
 			Match(IDENTIFIER);
 			}
 		}
@@ -584,6 +667,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_type; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterType(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitType(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitType(this);
@@ -599,7 +692,7 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 95;
+			State = 99;
 			_la = TokenStream.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STRING) | (1L << BOOL) | (1L << INT) | (1L << ARRAY) | (1L << OBJECT))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -640,6 +733,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_resource; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterResource(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitResource(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitResource(this);
@@ -655,25 +758,25 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 97;
-			Match(RESOURCE);
-			State = 98;
-			identifier();
-			State = 99;
-			resourceType();
 			State = 101;
+			Match(RESOURCE);
+			State = 102;
+			identifier();
+			State = 103;
+			resourceType();
+			State = 105;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			if (_la==EXISTING) {
 				{
-				State = 100;
+				State = 104;
 				Match(EXISTING);
 				}
 			}
 
-			State = 103;
+			State = 107;
 			Match(EQUAL);
-			State = 104;
+			State = 108;
 			objectValue();
 			}
 		}
@@ -698,6 +801,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_resourceType; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterResourceType(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitResourceType(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitResourceType(this);
@@ -712,7 +825,7 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 106;
+			State = 110;
 			stringValue();
 			}
 		}
@@ -737,6 +850,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_modulePath; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterModulePath(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitModulePath(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitModulePath(this);
@@ -751,7 +874,7 @@ public partial class bicepParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 108;
+			State = 112;
 			stringValue();
 			}
 		}
@@ -791,6 +914,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_value; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitValue(this);
@@ -803,48 +936,48 @@ public partial class bicepParser : Parser {
 		ValueContext _localctx = new ValueContext(Context, State);
 		EnterRule(_localctx, 24, RULE_value);
 		try {
-			State = 116;
+			State = 120;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case IDENTIFIER:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 110;
+				State = 114;
 				valueExpression();
 				}
 				break;
 			case OPEN_STRING:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 111;
+				State = 115;
 				stringValue();
 				}
 				break;
 			case NUMBER:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 112;
+				State = 116;
 				numberValue();
 				}
 				break;
 			case BOOLEAN:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 113;
+				State = 117;
 				boolValue();
 				}
 				break;
 			case OPENSQUARE:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 114;
+				State = 118;
 				arrayValue();
 				}
 				break;
 			case OPENGRAPH:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 115;
+				State = 119;
 				objectValue();
 				}
 				break;
@@ -868,17 +1001,27 @@ public partial class bicepParser : Parser {
 			return GetRuleContext<FunctionContext>(0);
 		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode POINT() { return GetToken(bicepParser.POINT, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ValueExpressionContext valueExpression() {
-			return GetRuleContext<ValueExpressionContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public MemberExpressionContext memberExpression() {
+			return GetRuleContext<MemberExpressionContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public VariableContext variable() {
-			return GetRuleContext<VariableContext>(0);
+		[System.Diagnostics.DebuggerNonUserCode] public ReferenceContext reference() {
+			return GetRuleContext<ReferenceContext>(0);
 		}
 		public ValueExpressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_valueExpression; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterValueExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitValueExpression(this);
+		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
@@ -892,43 +1035,43 @@ public partial class bicepParser : Parser {
 		ValueExpressionContext _localctx = new ValueExpressionContext(Context, State);
 		EnterRule(_localctx, 26, RULE_valueExpression);
 		try {
-			State = 128;
+			State = 132;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,7,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 118;
+				State = 122;
 				function();
-				State = 119;
+				State = 123;
 				Match(POINT);
-				State = 120;
-				valueExpression();
+				State = 124;
+				memberExpression();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 122;
-				variable();
-				State = 123;
+				State = 126;
+				reference();
+				State = 127;
 				Match(POINT);
-				State = 124;
-				valueExpression();
+				State = 128;
+				memberExpression();
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 126;
+				State = 130;
 				function();
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 127;
-				variable();
+				State = 131;
+				reference();
 				}
 				break;
 			}
@@ -944,45 +1087,197 @@ public partial class bicepParser : Parser {
 		return _localctx;
 	}
 
-	public partial class VariableContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(bicepParser.IDENTIFIER, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPENSQUARE() { return GetToken(bicepParser.OPENSQUARE, 0); }
-		[System.Diagnostics.DebuggerNonUserCode] public ValueContext value() {
-			return GetRuleContext<ValueContext>(0);
+	public partial class MemberExpressionContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public FunctionContext function() {
+			return GetRuleContext<FunctionContext>(0);
 		}
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSESQUARE() { return GetToken(bicepParser.CLOSESQUARE, 0); }
-		public VariableContext(ParserRuleContext parent, int invokingState)
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode POINT() { return GetToken(bicepParser.POINT, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public MemberExpressionContext memberExpression() {
+			return GetRuleContext<MemberExpressionContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public MemberContext member() {
+			return GetRuleContext<MemberContext>(0);
+		}
+		public MemberExpressionContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_variable; } }
+		public override int RuleIndex { get { return RULE_memberExpression; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterMemberExpression(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitMemberExpression(this);
+		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
-			if (typedVisitor != null) return typedVisitor.VisitVariable(this);
+			if (typedVisitor != null) return typedVisitor.VisitMemberExpression(this);
 			else return visitor.VisitChildren(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public VariableContext variable() {
-		VariableContext _localctx = new VariableContext(Context, State);
-		EnterRule(_localctx, 28, RULE_variable);
+	public MemberExpressionContext memberExpression() {
+		MemberExpressionContext _localctx = new MemberExpressionContext(Context, State);
+		EnterRule(_localctx, 28, RULE_memberExpression);
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 130;
-			Match(IDENTIFIER);
-			State = 135;
+			State = 144;
 			ErrorHandler.Sync(this);
 			switch ( Interpreter.AdaptivePredict(TokenStream,8,Context) ) {
 			case 1:
+				EnterOuterAlt(_localctx, 1);
 				{
-				State = 131;
+				State = 134;
+				function();
+				State = 135;
+				Match(POINT);
+				State = 136;
+				memberExpression();
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 138;
+				member();
+				State = 139;
+				Match(POINT);
+				State = 140;
+				memberExpression();
+				}
+				break;
+			case 3:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 142;
+				function();
+				}
+				break;
+			case 4:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 143;
+				member();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class MemberContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public IdentifierContext identifier() {
+			return GetRuleContext<IdentifierContext>(0);
+		}
+		public MemberContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_member; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterMember(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitMember(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitMember(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public MemberContext member() {
+		MemberContext _localctx = new MemberContext(Context, State);
+		EnterRule(_localctx, 30, RULE_member);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 146;
+			identifier();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ReferenceContext : ParserRuleContext {
+		[System.Diagnostics.DebuggerNonUserCode] public IdentifierContext identifier() {
+			return GetRuleContext<IdentifierContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPENSQUARE() { return GetToken(bicepParser.OPENSQUARE, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public ValueContext value() {
+			return GetRuleContext<ValueContext>(0);
+		}
+		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSESQUARE() { return GetToken(bicepParser.CLOSESQUARE, 0); }
+		public ReferenceContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_reference; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterReference(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitReference(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
+			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
+			if (typedVisitor != null) return typedVisitor.VisitReference(this);
+			else return visitor.VisitChildren(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ReferenceContext reference() {
+		ReferenceContext _localctx = new ReferenceContext(Context, State);
+		EnterRule(_localctx, 32, RULE_reference);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 148;
+			identifier();
+			State = 153;
+			ErrorHandler.Sync(this);
+			switch ( Interpreter.AdaptivePredict(TokenStream,9,Context) ) {
+			case 1:
+				{
+				State = 149;
 				Match(OPENSQUARE);
-				State = 132;
+				State = 150;
 				value();
-				State = 133;
+				State = 151;
 				Match(CLOSESQUARE);
 				}
 				break;
@@ -1001,7 +1296,9 @@ public partial class bicepParser : Parser {
 	}
 
 	public partial class FunctionContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(bicepParser.IDENTIFIER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public IdentifierContext identifier() {
+			return GetRuleContext<IdentifierContext>(0);
+		}
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode OPENPARENTHESIS() { return GetToken(bicepParser.OPENPARENTHESIS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode CLOSEPARENTHESIS() { return GetToken(bicepParser.CLOSEPARENTHESIS, 0); }
 		[System.Diagnostics.DebuggerNonUserCode] public FunctionParameterContext[] functionParameter() {
@@ -1020,6 +1317,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_function; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterFunction(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitFunction(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitFunction(this);
@@ -1030,46 +1337,46 @@ public partial class bicepParser : Parser {
 	[RuleVersion(0)]
 	public FunctionContext function() {
 		FunctionContext _localctx = new FunctionContext(Context, State);
-		EnterRule(_localctx, 30, RULE_function);
+		EnterRule(_localctx, 34, RULE_function);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 137;
-			Match(IDENTIFIER);
-			State = 138;
+			State = 155;
+			identifier();
+			State = 156;
 			Match(OPENPARENTHESIS);
-			State = 149;
+			State = 167;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << OPENSQUARE) | (1L << OPENGRAPH) | (1L << BOOLEAN) | (1L << NUMBER) | (1L << IDENTIFIER) | (1L << OPEN_STRING))) != 0)) {
 				{
 				{
-				State = 139;
+				State = 157;
 				functionParameter();
-				State = 144;
+				State = 162;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 				while (_la==COMMA) {
 					{
 					{
-					State = 140;
+					State = 158;
 					Match(COMMA);
-					State = 141;
+					State = 159;
 					functionParameter();
 					}
 					}
-					State = 146;
+					State = 164;
 					ErrorHandler.Sync(this);
 					_la = TokenStream.LA(1);
 				}
 				}
 				}
-				State = 151;
+				State = 169;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 152;
+			State = 170;
 			Match(CLOSEPARENTHESIS);
 			}
 		}
@@ -1094,6 +1401,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_functionParameter; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterFunctionParameter(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitFunctionParameter(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitFunctionParameter(this);
@@ -1104,11 +1421,11 @@ public partial class bicepParser : Parser {
 	[RuleVersion(0)]
 	public FunctionParameterContext functionParameter() {
 		FunctionParameterContext _localctx = new FunctionParameterContext(Context, State);
-		EnterRule(_localctx, 32, RULE_functionParameter);
+		EnterRule(_localctx, 36, RULE_functionParameter);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 154;
+			State = 172;
 			value();
 			}
 		}
@@ -1150,6 +1467,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_stringValue; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterStringValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitStringValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitStringValue(this);
@@ -1160,34 +1487,34 @@ public partial class bicepParser : Parser {
 	[RuleVersion(0)]
 	public StringValueContext stringValue() {
 		StringValueContext _localctx = new StringValueContext(Context, State);
-		EnterRule(_localctx, 34, RULE_stringValue);
+		EnterRule(_localctx, 38, RULE_stringValue);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 156;
+			State = 174;
 			Match(OPEN_STRING);
-			State = 164;
+			State = 182;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==TEXT || _la==ENTER_INTERPOLATION) {
 				{
-				State = 162;
+				State = 180;
 				ErrorHandler.Sync(this);
 				switch (TokenStream.LA(1)) {
 				case ENTER_INTERPOLATION:
 					{
-					State = 157;
+					State = 175;
 					Match(ENTER_INTERPOLATION);
-					State = 158;
+					State = 176;
 					value();
-					State = 159;
+					State = 177;
 					Match(CLOSEGRAPH);
 					}
 					break;
 				case TEXT:
 					{
-					State = 161;
+					State = 179;
 					Match(TEXT);
 					}
 					break;
@@ -1195,11 +1522,11 @@ public partial class bicepParser : Parser {
 					throw new NoViableAltException(this);
 				}
 				}
-				State = 166;
+				State = 184;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 167;
+			State = 185;
 			Match(CLOSE_STRING);
 			}
 		}
@@ -1222,6 +1549,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_boolValue; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterBoolValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitBoolValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitBoolValue(this);
@@ -1232,11 +1569,11 @@ public partial class bicepParser : Parser {
 	[RuleVersion(0)]
 	public BoolValueContext boolValue() {
 		BoolValueContext _localctx = new BoolValueContext(Context, State);
-		EnterRule(_localctx, 36, RULE_boolValue);
+		EnterRule(_localctx, 40, RULE_boolValue);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 169;
+			State = 187;
 			Match(BOOLEAN);
 			}
 		}
@@ -1259,6 +1596,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_numberValue; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterNumberValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitNumberValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitNumberValue(this);
@@ -1269,11 +1616,11 @@ public partial class bicepParser : Parser {
 	[RuleVersion(0)]
 	public NumberValueContext numberValue() {
 		NumberValueContext _localctx = new NumberValueContext(Context, State);
-		EnterRule(_localctx, 38, RULE_numberValue);
+		EnterRule(_localctx, 42, RULE_numberValue);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 171;
+			State = 189;
 			Match(NUMBER);
 			}
 		}
@@ -1303,6 +1650,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_arrayValue; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterArrayValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitArrayValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitArrayValue(this);
@@ -1313,28 +1670,28 @@ public partial class bicepParser : Parser {
 	[RuleVersion(0)]
 	public ArrayValueContext arrayValue() {
 		ArrayValueContext _localctx = new ArrayValueContext(Context, State);
-		EnterRule(_localctx, 40, RULE_arrayValue);
+		EnterRule(_localctx, 44, RULE_arrayValue);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 173;
+			State = 191;
 			Match(OPENSQUARE);
-			State = 177;
+			State = 195;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << OPENSQUARE) | (1L << OPENGRAPH) | (1L << BOOLEAN) | (1L << NUMBER) | (1L << IDENTIFIER) | (1L << OPEN_STRING))) != 0)) {
 				{
 				{
-				State = 174;
+				State = 192;
 				value();
 				}
 				}
-				State = 179;
+				State = 197;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 180;
+			State = 198;
 			Match(CLOSESQUARE);
 			}
 		}
@@ -1364,6 +1721,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_objectValue; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterObjectValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitObjectValue(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitObjectValue(this);
@@ -1374,28 +1741,28 @@ public partial class bicepParser : Parser {
 	[RuleVersion(0)]
 	public ObjectValueContext objectValue() {
 		ObjectValueContext _localctx = new ObjectValueContext(Context, State);
-		EnterRule(_localctx, 42, RULE_objectValue);
+		EnterRule(_localctx, 46, RULE_objectValue);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 182;
+			State = 200;
 			Match(OPENGRAPH);
-			State = 186;
+			State = 204;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.LA(1);
 			while (_la==IDENTIFIER || _la==OPEN_STRING) {
 				{
 				{
-				State = 183;
+				State = 201;
 				property();
 				}
 				}
-				State = 188;
+				State = 206;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.LA(1);
 			}
-			State = 189;
+			State = 207;
 			Match(CLOSEGRAPH);
 			}
 		}
@@ -1424,6 +1791,16 @@ public partial class bicepParser : Parser {
 		}
 		public override int RuleIndex { get { return RULE_property; } }
 		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterProperty(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitProperty(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
 			if (typedVisitor != null) return typedVisitor.VisitProperty(this);
@@ -1434,15 +1811,15 @@ public partial class bicepParser : Parser {
 	[RuleVersion(0)]
 	public PropertyContext property() {
 		PropertyContext _localctx = new PropertyContext(Context, State);
-		EnterRule(_localctx, 44, RULE_property);
+		EnterRule(_localctx, 48, RULE_property);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 191;
+			State = 209;
 			propertyName();
-			State = 192;
+			State = 210;
 			Match(COLON);
-			State = 193;
+			State = 211;
 			value();
 			}
 		}
@@ -1458,7 +1835,9 @@ public partial class bicepParser : Parser {
 	}
 
 	public partial class PropertyNameContext : ParserRuleContext {
-		[System.Diagnostics.DebuggerNonUserCode] public ITerminalNode IDENTIFIER() { return GetToken(bicepParser.IDENTIFIER, 0); }
+		[System.Diagnostics.DebuggerNonUserCode] public IdentifierContext identifier() {
+			return GetRuleContext<IdentifierContext>(0);
+		}
 		[System.Diagnostics.DebuggerNonUserCode] public StringValueContext stringValue() {
 			return GetRuleContext<StringValueContext>(0);
 		}
@@ -1467,6 +1846,16 @@ public partial class bicepParser : Parser {
 		{
 		}
 		public override int RuleIndex { get { return RULE_propertyName; } }
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void EnterRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.EnterPropertyName(this);
+		}
+		[System.Diagnostics.DebuggerNonUserCode]
+		public override void ExitRule(IParseTreeListener listener) {
+			IbicepParserListener typedListener = listener as IbicepParserListener;
+			if (typedListener != null) typedListener.ExitPropertyName(this);
+		}
 		[System.Diagnostics.DebuggerNonUserCode]
 		public override TResult Accept<TResult>(IParseTreeVisitor<TResult> visitor) {
 			IbicepParserVisitor<TResult> typedVisitor = visitor as IbicepParserVisitor<TResult>;
@@ -1478,22 +1867,22 @@ public partial class bicepParser : Parser {
 	[RuleVersion(0)]
 	public PropertyNameContext propertyName() {
 		PropertyNameContext _localctx = new PropertyNameContext(Context, State);
-		EnterRule(_localctx, 46, RULE_propertyName);
+		EnterRule(_localctx, 50, RULE_propertyName);
 		try {
-			State = 197;
+			State = 215;
 			ErrorHandler.Sync(this);
 			switch (TokenStream.LA(1)) {
 			case IDENTIFIER:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 195;
-				Match(IDENTIFIER);
+				State = 213;
+				identifier();
 				}
 				break;
 			case OPEN_STRING:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 196;
+				State = 214;
 				stringValue();
 				}
 				break;
@@ -1513,67 +1902,73 @@ public partial class bicepParser : Parser {
 	}
 
 	private static int[] _serializedATN = {
-		4,1,34,200,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
+		4,1,34,218,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,7,
 		7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,2,14,7,14,
 		2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,20,7,20,2,21,7,21,
-		2,22,7,22,2,23,7,23,1,0,3,0,50,8,0,1,0,1,0,1,0,1,0,4,0,56,8,0,11,0,12,
-		0,57,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2,1,2,1,3,1,3,1,3,1,3,1,
-		4,1,4,1,5,5,5,79,8,5,10,5,12,5,82,9,5,1,5,1,5,1,5,1,5,1,5,3,5,89,8,5,1,
-		6,1,6,1,6,1,7,1,7,1,8,1,8,1,9,1,9,1,9,1,9,3,9,102,8,9,1,9,1,9,1,9,1,10,
-		1,10,1,11,1,11,1,12,1,12,1,12,1,12,1,12,1,12,3,12,117,8,12,1,13,1,13,1,
-		13,1,13,1,13,1,13,1,13,1,13,1,13,1,13,3,13,129,8,13,1,14,1,14,1,14,1,14,
-		1,14,3,14,136,8,14,1,15,1,15,1,15,1,15,1,15,5,15,143,8,15,10,15,12,15,
-		146,9,15,5,15,148,8,15,10,15,12,15,151,9,15,1,15,1,15,1,16,1,16,1,17,1,
-		17,1,17,1,17,1,17,1,17,5,17,163,8,17,10,17,12,17,166,9,17,1,17,1,17,1,
-		18,1,18,1,19,1,19,1,20,1,20,5,20,176,8,20,10,20,12,20,179,9,20,1,20,1,
-		20,1,21,1,21,5,21,185,8,21,10,21,12,21,188,9,21,1,21,1,21,1,22,1,22,1,
-		22,1,22,1,23,1,23,3,23,198,8,23,1,23,0,0,24,0,2,4,6,8,10,12,14,16,18,20,
-		22,24,26,28,30,32,34,36,38,40,42,44,46,0,1,1,0,7,11,199,0,49,1,0,0,0,2,
-		59,1,0,0,0,4,65,1,0,0,0,6,71,1,0,0,0,8,75,1,0,0,0,10,80,1,0,0,0,12,90,
-		1,0,0,0,14,93,1,0,0,0,16,95,1,0,0,0,18,97,1,0,0,0,20,106,1,0,0,0,22,108,
-		1,0,0,0,24,116,1,0,0,0,26,128,1,0,0,0,28,130,1,0,0,0,30,137,1,0,0,0,32,
-		154,1,0,0,0,34,156,1,0,0,0,36,169,1,0,0,0,38,171,1,0,0,0,40,173,1,0,0,
-		0,42,182,1,0,0,0,44,191,1,0,0,0,46,197,1,0,0,0,48,50,3,6,3,0,49,48,1,0,
-		0,0,49,50,1,0,0,0,50,55,1,0,0,0,51,56,3,18,9,0,52,56,3,10,5,0,53,56,3,
-		2,1,0,54,56,3,4,2,0,55,51,1,0,0,0,55,52,1,0,0,0,55,53,1,0,0,0,55,54,1,
-		0,0,0,56,57,1,0,0,0,57,55,1,0,0,0,57,58,1,0,0,0,58,1,1,0,0,0,59,60,5,4,
-		0,0,60,61,3,14,7,0,61,62,3,22,11,0,62,63,5,23,0,0,63,64,3,42,21,0,64,3,
-		1,0,0,0,65,66,5,5,0,0,66,67,3,14,7,0,67,68,3,16,8,0,68,69,5,23,0,0,69,
-		70,3,24,12,0,70,5,1,0,0,0,71,72,5,1,0,0,72,73,5,23,0,0,73,74,3,8,4,0,74,
-		7,1,0,0,0,75,76,3,34,17,0,76,9,1,0,0,0,77,79,3,12,6,0,78,77,1,0,0,0,79,
-		82,1,0,0,0,80,78,1,0,0,0,80,81,1,0,0,0,81,83,1,0,0,0,82,80,1,0,0,0,83,
-		84,5,2,0,0,84,85,3,14,7,0,85,88,3,16,8,0,86,87,5,23,0,0,87,89,3,24,12,
-		0,88,86,1,0,0,0,88,89,1,0,0,0,89,11,1,0,0,0,90,91,5,13,0,0,91,92,3,26,
-		13,0,92,13,1,0,0,0,93,94,5,27,0,0,94,15,1,0,0,0,95,96,7,0,0,0,96,17,1,
-		0,0,0,97,98,5,3,0,0,98,99,3,14,7,0,99,101,3,20,10,0,100,102,5,6,0,0,101,
-		100,1,0,0,0,101,102,1,0,0,0,102,103,1,0,0,0,103,104,5,23,0,0,104,105,3,
-		42,21,0,105,19,1,0,0,0,106,107,3,34,17,0,107,21,1,0,0,0,108,109,3,34,17,
-		0,109,23,1,0,0,0,110,117,3,26,13,0,111,117,3,34,17,0,112,117,3,38,19,0,
-		113,117,3,36,18,0,114,117,3,40,20,0,115,117,3,42,21,0,116,110,1,0,0,0,
-		116,111,1,0,0,0,116,112,1,0,0,0,116,113,1,0,0,0,116,114,1,0,0,0,116,115,
-		1,0,0,0,117,25,1,0,0,0,118,119,3,30,15,0,119,120,5,22,0,0,120,121,3,26,
-		13,0,121,129,1,0,0,0,122,123,3,28,14,0,123,124,5,22,0,0,124,125,3,26,13,
-		0,125,129,1,0,0,0,126,129,3,30,15,0,127,129,3,28,14,0,128,118,1,0,0,0,
-		128,122,1,0,0,0,128,126,1,0,0,0,128,127,1,0,0,0,129,27,1,0,0,0,130,135,
-		5,27,0,0,131,132,5,14,0,0,132,133,3,24,12,0,133,134,5,15,0,0,134,136,1,
-		0,0,0,135,131,1,0,0,0,135,136,1,0,0,0,136,29,1,0,0,0,137,138,5,27,0,0,
-		138,149,5,20,0,0,139,144,3,32,16,0,140,141,5,19,0,0,141,143,3,32,16,0,
-		142,140,1,0,0,0,143,146,1,0,0,0,144,142,1,0,0,0,144,145,1,0,0,0,145,148,
-		1,0,0,0,146,144,1,0,0,0,147,139,1,0,0,0,148,151,1,0,0,0,149,147,1,0,0,
-		0,149,150,1,0,0,0,150,152,1,0,0,0,151,149,1,0,0,0,152,153,5,21,0,0,153,
-		31,1,0,0,0,154,155,3,24,12,0,155,33,1,0,0,0,156,164,5,29,0,0,157,158,5,
-		34,0,0,158,159,3,24,12,0,159,160,5,17,0,0,160,163,1,0,0,0,161,163,5,32,
-		0,0,162,157,1,0,0,0,162,161,1,0,0,0,163,166,1,0,0,0,164,162,1,0,0,0,164,
-		165,1,0,0,0,165,167,1,0,0,0,166,164,1,0,0,0,167,168,5,33,0,0,168,35,1,
-		0,0,0,169,170,5,25,0,0,170,37,1,0,0,0,171,172,5,26,0,0,172,39,1,0,0,0,
-		173,177,5,14,0,0,174,176,3,24,12,0,175,174,1,0,0,0,176,179,1,0,0,0,177,
-		175,1,0,0,0,177,178,1,0,0,0,178,180,1,0,0,0,179,177,1,0,0,0,180,181,5,
-		15,0,0,181,41,1,0,0,0,182,186,5,16,0,0,183,185,3,44,22,0,184,183,1,0,0,
-		0,185,188,1,0,0,0,186,184,1,0,0,0,186,187,1,0,0,0,187,189,1,0,0,0,188,
-		186,1,0,0,0,189,190,5,17,0,0,190,43,1,0,0,0,191,192,3,46,23,0,192,193,
-		5,12,0,0,193,194,3,24,12,0,194,45,1,0,0,0,195,198,5,27,0,0,196,198,3,34,
-		17,0,197,195,1,0,0,0,197,196,1,0,0,0,198,47,1,0,0,0,16,49,55,57,80,88,
-		101,116,128,135,144,149,162,164,177,186,197
+		2,22,7,22,2,23,7,23,2,24,7,24,2,25,7,25,1,0,3,0,54,8,0,1,0,1,0,1,0,1,0,
+		4,0,60,8,0,11,0,12,0,61,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,2,1,2,1,2,1,2,1,
+		2,1,3,1,3,1,3,1,3,1,4,1,4,1,5,5,5,83,8,5,10,5,12,5,86,9,5,1,5,1,5,1,5,
+		1,5,1,5,3,5,93,8,5,1,6,1,6,1,6,1,7,1,7,1,8,1,8,1,9,1,9,1,9,1,9,3,9,106,
+		8,9,1,9,1,9,1,9,1,10,1,10,1,11,1,11,1,12,1,12,1,12,1,12,1,12,1,12,3,12,
+		121,8,12,1,13,1,13,1,13,1,13,1,13,1,13,1,13,1,13,1,13,1,13,3,13,133,8,
+		13,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,1,14,3,14,145,8,14,1,15,
+		1,15,1,16,1,16,1,16,1,16,1,16,3,16,154,8,16,1,17,1,17,1,17,1,17,1,17,5,
+		17,161,8,17,10,17,12,17,164,9,17,5,17,166,8,17,10,17,12,17,169,9,17,1,
+		17,1,17,1,18,1,18,1,19,1,19,1,19,1,19,1,19,1,19,5,19,181,8,19,10,19,12,
+		19,184,9,19,1,19,1,19,1,20,1,20,1,21,1,21,1,22,1,22,5,22,194,8,22,10,22,
+		12,22,197,9,22,1,22,1,22,1,23,1,23,5,23,203,8,23,10,23,12,23,206,9,23,
+		1,23,1,23,1,24,1,24,1,24,1,24,1,25,1,25,3,25,216,8,25,1,25,0,0,26,0,2,
+		4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40,42,44,46,48,50,0,
+		1,1,0,7,11,218,0,53,1,0,0,0,2,63,1,0,0,0,4,69,1,0,0,0,6,75,1,0,0,0,8,79,
+		1,0,0,0,10,84,1,0,0,0,12,94,1,0,0,0,14,97,1,0,0,0,16,99,1,0,0,0,18,101,
+		1,0,0,0,20,110,1,0,0,0,22,112,1,0,0,0,24,120,1,0,0,0,26,132,1,0,0,0,28,
+		144,1,0,0,0,30,146,1,0,0,0,32,148,1,0,0,0,34,155,1,0,0,0,36,172,1,0,0,
+		0,38,174,1,0,0,0,40,187,1,0,0,0,42,189,1,0,0,0,44,191,1,0,0,0,46,200,1,
+		0,0,0,48,209,1,0,0,0,50,215,1,0,0,0,52,54,3,6,3,0,53,52,1,0,0,0,53,54,
+		1,0,0,0,54,59,1,0,0,0,55,60,3,18,9,0,56,60,3,10,5,0,57,60,3,2,1,0,58,60,
+		3,4,2,0,59,55,1,0,0,0,59,56,1,0,0,0,59,57,1,0,0,0,59,58,1,0,0,0,60,61,
+		1,0,0,0,61,59,1,0,0,0,61,62,1,0,0,0,62,1,1,0,0,0,63,64,5,4,0,0,64,65,3,
+		14,7,0,65,66,3,22,11,0,66,67,5,23,0,0,67,68,3,46,23,0,68,3,1,0,0,0,69,
+		70,5,5,0,0,70,71,3,14,7,0,71,72,3,16,8,0,72,73,5,23,0,0,73,74,3,24,12,
+		0,74,5,1,0,0,0,75,76,5,1,0,0,76,77,5,23,0,0,77,78,3,8,4,0,78,7,1,0,0,0,
+		79,80,3,38,19,0,80,9,1,0,0,0,81,83,3,12,6,0,82,81,1,0,0,0,83,86,1,0,0,
+		0,84,82,1,0,0,0,84,85,1,0,0,0,85,87,1,0,0,0,86,84,1,0,0,0,87,88,5,2,0,
+		0,88,89,3,14,7,0,89,92,3,16,8,0,90,91,5,23,0,0,91,93,3,24,12,0,92,90,1,
+		0,0,0,92,93,1,0,0,0,93,11,1,0,0,0,94,95,5,13,0,0,95,96,3,26,13,0,96,13,
+		1,0,0,0,97,98,5,27,0,0,98,15,1,0,0,0,99,100,7,0,0,0,100,17,1,0,0,0,101,
+		102,5,3,0,0,102,103,3,14,7,0,103,105,3,20,10,0,104,106,5,6,0,0,105,104,
+		1,0,0,0,105,106,1,0,0,0,106,107,1,0,0,0,107,108,5,23,0,0,108,109,3,46,
+		23,0,109,19,1,0,0,0,110,111,3,38,19,0,111,21,1,0,0,0,112,113,3,38,19,0,
+		113,23,1,0,0,0,114,121,3,26,13,0,115,121,3,38,19,0,116,121,3,42,21,0,117,
+		121,3,40,20,0,118,121,3,44,22,0,119,121,3,46,23,0,120,114,1,0,0,0,120,
+		115,1,0,0,0,120,116,1,0,0,0,120,117,1,0,0,0,120,118,1,0,0,0,120,119,1,
+		0,0,0,121,25,1,0,0,0,122,123,3,34,17,0,123,124,5,22,0,0,124,125,3,28,14,
+		0,125,133,1,0,0,0,126,127,3,32,16,0,127,128,5,22,0,0,128,129,3,28,14,0,
+		129,133,1,0,0,0,130,133,3,34,17,0,131,133,3,32,16,0,132,122,1,0,0,0,132,
+		126,1,0,0,0,132,130,1,0,0,0,132,131,1,0,0,0,133,27,1,0,0,0,134,135,3,34,
+		17,0,135,136,5,22,0,0,136,137,3,28,14,0,137,145,1,0,0,0,138,139,3,30,15,
+		0,139,140,5,22,0,0,140,141,3,28,14,0,141,145,1,0,0,0,142,145,3,34,17,0,
+		143,145,3,30,15,0,144,134,1,0,0,0,144,138,1,0,0,0,144,142,1,0,0,0,144,
+		143,1,0,0,0,145,29,1,0,0,0,146,147,3,14,7,0,147,31,1,0,0,0,148,153,3,14,
+		7,0,149,150,5,14,0,0,150,151,3,24,12,0,151,152,5,15,0,0,152,154,1,0,0,
+		0,153,149,1,0,0,0,153,154,1,0,0,0,154,33,1,0,0,0,155,156,3,14,7,0,156,
+		167,5,20,0,0,157,162,3,36,18,0,158,159,5,19,0,0,159,161,3,36,18,0,160,
+		158,1,0,0,0,161,164,1,0,0,0,162,160,1,0,0,0,162,163,1,0,0,0,163,166,1,
+		0,0,0,164,162,1,0,0,0,165,157,1,0,0,0,166,169,1,0,0,0,167,165,1,0,0,0,
+		167,168,1,0,0,0,168,170,1,0,0,0,169,167,1,0,0,0,170,171,5,21,0,0,171,35,
+		1,0,0,0,172,173,3,24,12,0,173,37,1,0,0,0,174,182,5,29,0,0,175,176,5,34,
+		0,0,176,177,3,24,12,0,177,178,5,17,0,0,178,181,1,0,0,0,179,181,5,32,0,
+		0,180,175,1,0,0,0,180,179,1,0,0,0,181,184,1,0,0,0,182,180,1,0,0,0,182,
+		183,1,0,0,0,183,185,1,0,0,0,184,182,1,0,0,0,185,186,5,33,0,0,186,39,1,
+		0,0,0,187,188,5,25,0,0,188,41,1,0,0,0,189,190,5,26,0,0,190,43,1,0,0,0,
+		191,195,5,14,0,0,192,194,3,24,12,0,193,192,1,0,0,0,194,197,1,0,0,0,195,
+		193,1,0,0,0,195,196,1,0,0,0,196,198,1,0,0,0,197,195,1,0,0,0,198,199,5,
+		15,0,0,199,45,1,0,0,0,200,204,5,16,0,0,201,203,3,48,24,0,202,201,1,0,0,
+		0,203,206,1,0,0,0,204,202,1,0,0,0,204,205,1,0,0,0,205,207,1,0,0,0,206,
+		204,1,0,0,0,207,208,5,17,0,0,208,47,1,0,0,0,209,210,3,50,25,0,210,211,
+		5,12,0,0,211,212,3,24,12,0,212,49,1,0,0,0,213,216,3,14,7,0,214,216,3,38,
+		19,0,215,213,1,0,0,0,215,214,1,0,0,0,216,51,1,0,0,0,17,53,59,61,84,92,
+		105,120,132,144,153,162,167,180,182,195,204,215
 	};
 
 	public static readonly ATN _ATN =

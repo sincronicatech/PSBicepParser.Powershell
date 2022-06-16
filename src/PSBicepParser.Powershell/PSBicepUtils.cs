@@ -12,7 +12,6 @@ internal class PSBicepUtils
     {
         AntlrInputStream inputStream = new AntlrInputStream(inputObject);
 
-        
         var lexer = new bicepLexer(inputStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(lexer);
 
@@ -44,7 +43,7 @@ internal class PSBicepUtils
                     break;
                 default:
                     if(hashtable[key]==null) continue;
-                    valueToAdd = hashtable[key].ToString();
+                    valueToAdd = Convert(hashtable[key]);
                     break;
             }
             sb.AppendLine($"  {key}: {valueToAdd}");
@@ -69,7 +68,7 @@ internal class PSBicepUtils
                     valueToAdd = lineAdder.Replace(Convert(ar),"\n  ");
                     break;
                 default:
-                    valueToAdd = element.ToString();
+                    valueToAdd =  Convert(element);
                     break;
             }
             sb.AppendLine($"  {valueToAdd}");
@@ -87,6 +86,8 @@ internal class PSBicepUtils
                 return Convert(hs);
             case object[] ar:
                 return Convert(ar);
+            case bool bl:
+                return value.ToString().ToLower();
             default:
                 return value.ToString();
         }

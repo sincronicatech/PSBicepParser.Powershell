@@ -34,12 +34,9 @@ CLOSEPARENTHESIS: ')' ;
 
 POINT: '.';
 
-
 EQUAL: '=';
 
 DOLLAR: '$';
-
-
 
 fragment DIGIT: [0-9];
 

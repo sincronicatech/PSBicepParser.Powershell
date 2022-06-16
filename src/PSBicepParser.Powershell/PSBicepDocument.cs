@@ -4,7 +4,7 @@ using System.Text;
 namespace BicepParser.Powershell;
 
 
-public class PSBicepDocument:IPSBicepElement{
+public class PSBicepDocument:PSBicepElementBase{
     public PSBicepTargetScope? TargetScope {get;set;}
     public PSBicepParam[] Params {get; set;} = new PSBicepParam[0];
     public PSBicepResource[] Resources {get; set;} = new PSBicepResource[0];
@@ -12,7 +12,7 @@ public class PSBicepDocument:IPSBicepElement{
     public PSBicepModule[] Modules {get; set; } = new PSBicepModule[0];
     public PSBicepOutput[] Outputs {get; set;} = new PSBicepOutput[0];
 
-    public string ConvertToDocument()
+    public override string ConvertToDocument()
     {
         StringBuilder sb = new StringBuilder();
         if(TargetScope != null){

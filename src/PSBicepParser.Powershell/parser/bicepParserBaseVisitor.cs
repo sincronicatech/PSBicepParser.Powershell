@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+// Generated from C:\Users\DanieleFrancioni\OneDrive - Binarydea\Code\Sincronica\powershell-bicep-converter\src\BicepGrammar\bicepParser.g4 by ANTLR 4.10.1
+
 // Unreachable code detected
 #pragma warning disable 0162
 // The variable '...' is assigned but its value is never used
@@ -173,7 +175,7 @@ public partial class bicepParserBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// <return>The visitor result.</return>
 	public virtual Result VisitValueExpression([NotNull] bicepParser.ValueExpressionContext context) { return VisitChildren(context); }
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="bicepParser.variable"/>.
+	/// Visit a parse tree produced by <see cref="bicepParser.memberExpression"/>.
 	/// <para>
 	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
 	/// on <paramref name="context"/>.
@@ -181,7 +183,27 @@ public partial class bicepParserBaseVisitor<Result> : AbstractParseTreeVisitor<R
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
-	public virtual Result VisitVariable([NotNull] bicepParser.VariableContext context) { return VisitChildren(context); }
+	public virtual Result VisitMemberExpression([NotNull] bicepParser.MemberExpressionContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="bicepParser.member"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitMember([NotNull] bicepParser.MemberContext context) { return VisitChildren(context); }
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="bicepParser.reference"/>.
+	/// <para>
+	/// The default implementation returns the result of calling <see cref="AbstractParseTreeVisitor{Result}.VisitChildren(IRuleNode)"/>
+	/// on <paramref name="context"/>.
+	/// </para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	public virtual Result VisitReference([NotNull] bicepParser.ReferenceContext context) { return VisitChildren(context); }
 	/// <summary>
 	/// Visit a parse tree produced by <see cref="bicepParser.function"/>.
 	/// <para>

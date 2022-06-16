@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BicepParser.Powershell;
 
-public class PSBicepResource:IPSBicepElement
+public class PSBicepResource:PSBicepElementBase
 {
     public PSBicepResource(string identifier, string resourceType, string name)
     {
@@ -40,7 +40,7 @@ public class PSBicepResource:IPSBicepElement
         }
     }
 
-    public string ConvertToDocument()
+    public override string ConvertToDocument()
     {
         var newHashtable = (Hashtable)Attributes.Clone();
         newHashtable.Add("name", Name);
