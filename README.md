@@ -31,11 +31,19 @@ Creates a new BicepTargetScope Powershell object that can be assigned to a Bicep
 
 - ### ConvertFrom-PSBicepDocument
 
-Convert a string to a BicepDocument Powershell object.
+Converts a string to a BicepDocument Powershell object.
 
 - ### ConvertTo-PSBicepDocument
 
-Convert a BicepDocument Powershell object to a string that represents the content of a Bicep file.
+Converts a BicepDocument Powershell object to a string that represents the content of a Bicep file.
+
+- ### Get-PSBicepReference
+
+Analyzes the Bicep Object or the Bicep string and returns a list of references used by it
+
+- ### Resolve-PSBicepReference
+
+Given an identifier and a parsed Bicep document, returns the element referred by the identifier.
 
 ## Notes
 
@@ -48,8 +56,7 @@ Convert a BicepDocument Powershell object to a string that represents the conten
 ## Example
 
 ``` powershell
-Import-module ..\src\BicepParser.Powershell\bin\Debug\netstandard2.0\BicepParser.Powershell.dll
-
+Import-module .\src\PSBicepParser.Powershell\bin\Debug\netstandard2.0\publish\PSBicepParser.Powershell.dll 
 # reading the api management bicep quickstart
 $url = 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.apimanagement/azure-api-management-create/main.bicep'
 $request = Invoke-WebRequest -Uri $url
@@ -64,6 +71,27 @@ $bicepDocument
 $paramnew = new-PSBicepParam -Identifier 'theParam' -Type 'string'
 $bicepDocument.Params+=$paramnew
 
+# Print a list of references found in the document resource
+$bicepDocument.Resources|Get-PSBicepReference
+
+Resolve-PSBicepReference -Identifier 'sku' -DocumentObject $bicepDocument
+
 # Convert to Bicep Document
 $bicepDocument|convertto-PSBicepDocument
 ```
+
+## Build
+
+### Grammar
+
+Java 11 is required to build the grammar. Launch the GenerateParser.ps1 script in the BicepGrammar directory to generate the c# parser and lexer.
+
+### CmdLets
+
+Just launch 
+
+```
+dotnet publish
+```
+
+to build the module

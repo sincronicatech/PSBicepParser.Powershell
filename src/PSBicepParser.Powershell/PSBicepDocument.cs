@@ -26,6 +26,8 @@ public class PSBicepDocument : IPSBicepElement
         }
     }
 
+    public string ElementType => "Document";
+
     public string ConvertToDocument()
     {
         StringBuilder sb = new StringBuilder();

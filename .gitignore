@@ -2,6 +2,8 @@ src/BicepGrammar/GeneratedCode/**
 src/BicepGrammar/.antlr/**
 
 
+src/PSBicepParser.Powershell/parser/*
+
 src/PSBicepParser.Powershell/obj/**
 src/PSBicepParser.Powershell/bin/**
 

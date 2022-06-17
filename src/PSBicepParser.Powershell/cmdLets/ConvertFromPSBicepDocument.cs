@@ -13,14 +13,14 @@ public class ConvertFromPSBicepDocument : PSCmdlet
         Position = 0,
         ValueFromPipeline = true,
         ValueFromPipelineByPropertyName = true)]
-    public string? InputObject { get; set; }
+    public string? DocumentString { get; set; }
 
 
 
     protected override void ProcessRecord()
     {
-        if (InputObject == null) { throw new ArgumentNullException(nameof(InputObject)); }
-        PSBicepDocument document = PSBicepUtils.Parse(InputObject);
+        if (DocumentString == null) { throw new ArgumentNullException(nameof(DocumentString)); }
+        PSBicepDocument document = PSBicepUtils.Parse(DocumentString);
         WriteObject(document);
 
     }

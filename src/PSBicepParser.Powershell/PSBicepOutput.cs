@@ -15,6 +15,8 @@ public class PSBicepOutput: IPSBicepObject
     public string Identifier { get; set; }
     public string Type { get; set; }
 
+    public string ElementType => "Output";
+
     public string ConvertToDocument()
     {
         return $"output {Identifier} {Type} = {PSBicepUtils.Convert(Value)}";
