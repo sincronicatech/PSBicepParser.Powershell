@@ -79,6 +79,6 @@ $bicepDocument|convertto-PSBicepDocument
 
 ## Build
 
-Java 11 is required to build the grammar, since Antlr is written in java. Launch the GenerateParser.ps1 script in the BicepGrammar directory to generate the c# parser and lexer. Generated grammar code is gitignored.
+Java 11 is required to generate the c# parser. Execute the GenerateParser.ps1 script in the BicepGrammar directory to generate the c# parser and lexer. Generated parser and lexer are gitignored.
 
-To fully build the module, just launch the build.ps1 script. It will build both the grammar and the module.
+To build the module, just launch the build.ps1 script: it will both build the parser and the module.
