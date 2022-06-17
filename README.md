@@ -48,10 +48,7 @@ Given an identifier and a parsed Bicep document, returns the element referred by
 ## Notes
 
 - Currently "for" blocks are not recognized by the grammar
-- While the Antlr grammar is able to decode interpolated strings, the module treats them as strings
-- While the Antlr grammar is able to parse variables, the module treats them as strings right now. 
-  - If you want to assign a variable to an attribute, just write the name of the variable
-  - If you want to assign a string to an attribute, write the string with starting and closing apex
+- The parser does not distinguish between variables, identifiers and interpolated strings. However the Get-PSBicepReference cmdLet is able to identify references even inside an interpolated string
 
 ## Example
 
@@ -82,16 +79,6 @@ $bicepDocument|convertto-PSBicepDocument
 
 ## Build
 
-### Grammar
+Java 11 is required to build the grammar, since Antlr is written in java. Launch the GenerateParser.ps1 script in the BicepGrammar directory to generate the c# parser and lexer. Generated grammar code is gitignored.
 
-Java 11 is required to build the grammar. Launch the GenerateParser.ps1 script in the BicepGrammar directory to generate the c# parser and lexer.
-
-### CmdLets
-
-Just launch 
-
-```
-dotnet publish
-```
-
-to build the module
+To fully build the module, just launch the build.ps1 script. It will build both the grammar and the module.
