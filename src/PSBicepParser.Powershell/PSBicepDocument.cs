@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,6 +59,33 @@ public class PSBicepDocument : IPSBicepElement
         }
         sb.AppendLine();
         return sb.ToString();
+    }
+
+    public void Add(IPSBicepObject elementObject){
+        var identifier = elementObject.Identifier;
+        if(!this.AllObjects.Where<IPSBicepObject>(obj=>obj.Identifier == identifier).Any()){
+            switch(elementObject){
+                case PSBicepModule module:
+                    var listModule = new List<PSBicepModule>(this.Modules){module};
+                    this.Modules = listModule.ToArray<PSBicepModule>();
+                    break;
+                case PSBicepOutput output:
+                    var listOutputs = new List<PSBicepOutput>(this.Outputs){output};
+                    this.Outputs = listOutputs.ToArray<PSBicepOutput>();
+                    break;
+                case PSBicepParam parameter:
+                    var listParameters = new List<PSBicepParam>(this.Params){parameter};
+                    this.Params = listParameters.ToArray<PSBicepParam>();
+                    break;
+                case PSBicepResource resource:
+                    var listResources = new List<PSBicepResource>(this.Resources){resource};
+                    this.Resources = listResources.ToArray<PSBicepResource>();
+                    break;
+            }
+        }
+        else{
+            throw new ArgumentException("Element identifier already in use in the document");
+        }
     }
 
 }
