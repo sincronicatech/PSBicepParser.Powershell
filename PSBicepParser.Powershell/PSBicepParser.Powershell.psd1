@@ -24,10 +24,10 @@ GUID = 'a4c67658-920e-4901-8e41-bc581203d71a'
 Author = 'Daniele Francioni'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+CompanyName = 'Sincronica'
 
 # Copyright statement for this module
-Copyright = '(c) Daniele Francioni. All rights reserved.'
+# Copyright = '(c) Daniele Francioni. All rights reserved.'
 
 # Description of the functionality provided by this module
 # Description = ''
@@ -63,13 +63,13 @@ Copyright = '(c) Daniele Francioni. All rights reserved.'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = @('PSBicepParser.Powershell.objectFormat.ps1xml')
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('bin\PSBicepParser.Powershell.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'Resolve-MyCmdlet'
+FunctionsToExport = ''
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = '*'
