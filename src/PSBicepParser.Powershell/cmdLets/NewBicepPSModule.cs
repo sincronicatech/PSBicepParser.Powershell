@@ -30,7 +30,7 @@ public class NewBicepModule : PSCmdlet
         if (ModulePath == null) { throw new ArgumentNullException(nameof(ModulePath)); }
         if (Name == null) { throw new ArgumentNullException(nameof(Name)); }
         var module = new PSBicepModule(Identifier, ModulePath, Name);
-
+        WriteObject(module);
     }
 
 

@@ -57,6 +57,7 @@ public class NewBicepResource : PSCmdlet
         {
             resource.IsExisting = true;
         }
+        WriteObject(resource);
     }
 
 

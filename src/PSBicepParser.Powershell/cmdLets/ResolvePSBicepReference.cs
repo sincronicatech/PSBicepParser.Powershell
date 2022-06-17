@@ -20,7 +20,7 @@ public class ResolvePSPSBicepReference : PSCmdlet
         Position = 1,
         ValueFromPipeline = false,
         ValueFromPipelineByPropertyName = true)]
-    public PSBicepDocument? Document { get; set; }
+    public PSBicepDocument? DocumentObject { get; set; }
 
     private IPSBicepObject? findElement(string identifier, IPSBicepObject[] elements)
     {
@@ -34,9 +34,9 @@ public class ResolvePSPSBicepReference : PSCmdlet
     protected override void ProcessRecord()
     {
         if (Identifier == null) { throw new ArgumentNullException(nameof(Identifier)); }
-        if (Document == null) { throw new ArgumentNullException(nameof(Document)); }
+        if (DocumentObject == null) { throw new ArgumentNullException(nameof(DocumentObject)); }
         
-        foreach(var element in Document.AllObjects){
+        foreach(var element in DocumentObject.AllObjects){
             if(element.Identifier == Identifier){
                 WriteObject( element); return;
             }

@@ -18,6 +18,9 @@ public class PSBicepResource:IPSBicepObject
     public string? Parent { get; set; }
     public object[] DependsOn { get; set; } = new object[0];
     public bool IsExisting { get; set; } = false;
+
+    public string ElementType => "Resource";
+
     private Hashtable attributes = new Hashtable();
     public Hashtable Attributes { 
         get{

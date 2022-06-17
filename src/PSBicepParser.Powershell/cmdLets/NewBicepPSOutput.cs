@@ -34,9 +34,7 @@ public class NewBicepOutput : PSCmdlet
 
         var output = new PSBicepOutput(Identifier, Type,Value);
 
-        WriteObject(
-            output
-        );
+        WriteObject(output);
     }
 }
 

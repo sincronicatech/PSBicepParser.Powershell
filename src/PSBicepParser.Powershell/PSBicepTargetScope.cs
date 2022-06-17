@@ -10,6 +10,8 @@ public class PSBicepTargetScope: IPSBicepElement
         targetScopeProperty = targetScope;
     }
 
+    public string ElementType => "TargetScope";
+
     private string targetScopeProperty;
     public string Scope
     {

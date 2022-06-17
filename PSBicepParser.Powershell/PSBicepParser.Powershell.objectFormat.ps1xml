@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Configuration>
+    <ViewDefinitions>
+        <View>
+            <Name>IPSBicepObjectsFT</Name>
+            <ViewSelectedBy>
+                <TypeName>BicepParser.Powershell.PSBicepParam</TypeName>
+                <TypeName>BicepParser.Powershell.PSBicepOutput</TypeName>
+                <TypeName>BicepParser.Powershell.PSBicepResource</TypeName>
+                <TypeName>BicepParser.Powershell.PSBicepModule</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                    <TableColumnHeader>
+                        <Width>16</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>40</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>ElementType</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>Identifier</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                </TableRowEntries>
+            </TableControl>
+        </View>
+        <View>
+            <Name>ServiceWideViewFW</Name>
+            <ViewSelectedBy>
+                <TypeName>BicepParser.Powershell.PSBicepParam</TypeName>
+                <TypeName>BicepParser.Powershell.PSBicepOutput</TypeName>
+                <TypeName>BicepParser.Powershell.PSBicepResource</TypeName>
+                <TypeName>BicepParser.Powershell.PSBicepModule</TypeName>
+            </ViewSelectedBy>
+            <WideControl>
+                <WideEntries>
+                    <WideEntry>
+                        <WideItem>
+                            <PropertyName>Identifier</PropertyName>
+                        </WideItem>
+                    </WideEntry>
+                </WideEntries>
+            </WideControl>
+        </View>
+    </ViewDefinitions>
+</Configuration>

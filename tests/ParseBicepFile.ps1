@@ -1,4 +1,4 @@
-Import-module ..\src\BicepParser.Powershell\bin\Debug\netstandard2.0\BicepParser.Powershell.dll
+Import-module ..\output\PSBicepParser.Powershell\
 
 # reading the api management bicep quickstart
 $url = 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.apimanagement/azure-api-management-create/main.bicep'
@@ -16,3 +16,4 @@ $bicepDocument.Params+=$paramnew
 
 # Convert to bicep string
 $bicepDocument|convertto-PSBicepDocument
+

@@ -14,7 +14,7 @@ public class GetPSPSBicepReference : PSCmdlet
         ValueFromPipeline = true,
         ParameterSetName = "StringDocument",
         ValueFromPipelineByPropertyName = true)]
-    public string? StringDocument { get; set; }
+    public string? DocumentString { get; set; }
 
     [Parameter(
         Mandatory = true,
@@ -23,20 +23,20 @@ public class GetPSPSBicepReference : PSCmdlet
         ParameterSetName = "PSBicepElement",
         ValueFromPipelineByPropertyName = false)]
     [ValidateNotNullOrEmpty]
-    public IPSBicepObject? PSBicepElement { get; set; }
+    public IPSBicepObject? ElementObject { get; set; }
 
 
     protected override void ProcessRecord()
     {
         if(this.ParameterSetName=="PSBicepElement")
         {
-            if (PSBicepElement == null) { throw new ArgumentNullException(nameof(PSBicepElement)); }
-            StringDocument=PSBicepElement.ConvertToDocument();
+            if (ElementObject == null) { throw new ArgumentNullException(nameof(ElementObject)); }
+            DocumentString=ElementObject.ConvertToDocument();
 
         }
-        if (StringDocument == null) { throw new ArgumentNullException(nameof(StringDocument)); }
+        if (DocumentString == null) { throw new ArgumentNullException(nameof(DocumentString)); }
 
-        var references=PSBicepUtils.GetReferences(StringDocument);
+        var references=PSBicepUtils.GetReferences(DocumentString);
         WriteObject(references);
     }
 }

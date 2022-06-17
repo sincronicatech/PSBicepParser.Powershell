@@ -31,25 +31,29 @@ Creates a new BicepTargetScope Powershell object that can be assigned to a Bicep
 
 - ### ConvertFrom-PSBicepDocument
 
-Convert a string to a BicepDocument Powershell object.
+Converts a string to a BicepDocument Powershell object.
 
 - ### ConvertTo-PSBicepDocument
 
-Convert a BicepDocument Powershell object to a string that represents the content of a Bicep file.
+Converts a BicepDocument Powershell object to a string that represents the content of a Bicep file.
+
+- ### Get-PSBicepReference
+
+Analyzes the Bicep Object or the Bicep string and returns a list of references used by it
+
+- ### Resolve-PSBicepReference
+
+Given an identifier and a parsed Bicep document, returns the element referred by the identifier.
 
 ## Notes
 
 - Currently "for" blocks are not recognized by the grammar
-- While the Antlr grammar is able to decode interpolated strings, the module treats them as strings
-- While the Antlr grammar is able to parse variables, the module treats them as strings right now. 
-  - If you want to assign a variable to an attribute, just write the name of the variable
-  - If you want to assign a string to an attribute, write the string with starting and closing apex
+- The parser does not distinguish between variables, identifiers and interpolated strings. However the Get-PSBicepReference cmdLet is able to identify references even inside an interpolated string
 
 ## Example
 
 ``` powershell
-Import-module ..\src\BicepParser.Powershell\bin\Debug\netstandard2.0\BicepParser.Powershell.dll
-
+Import-module .\src\PSBicepParser.Powershell\bin\Debug\netstandard2.0\publish\PSBicepParser.Powershell.dll 
 # reading the api management bicep quickstart
 $url = 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.apimanagement/azure-api-management-create/main.bicep'
 $request = Invoke-WebRequest -Uri $url
@@ -64,6 +68,17 @@ $bicepDocument
 $paramnew = new-PSBicepParam -Identifier 'theParam' -Type 'string'
 $bicepDocument.Params+=$paramnew
 
+# Print a list of references found in the document resource
+$bicepDocument.Resources|Get-PSBicepReference
+
+Resolve-PSBicepReference -Identifier 'sku' -DocumentObject $bicepDocument
+
 # Convert to Bicep Document
 $bicepDocument|convertto-PSBicepDocument
 ```
+
+## Build
+
+Java 11 is required to generate the c# parser. Execute the GenerateParser.ps1 script in the BicepGrammar directory to generate the c# parser and lexer. Generated parser and lexer are gitignored.
+
+To build the module, just launch the build.ps1 script: it will both build the parser and the module.

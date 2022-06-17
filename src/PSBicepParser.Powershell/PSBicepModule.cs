@@ -15,6 +15,8 @@ public class PSBicepModule:IPSBicepObject
     public string ModulePath { get; set; }
     public string Name { get; private set;}
     
+    public string ElementType => "Module";
+
     private Hashtable attributes = new Hashtable();
     public Hashtable Attributes { 
         get{

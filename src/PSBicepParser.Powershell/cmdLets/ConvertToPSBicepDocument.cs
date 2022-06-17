@@ -13,12 +13,12 @@ public class ConvertToBicepDocument : PSCmdlet
         Position = 0,
         ValueFromPipeline = true,
         ValueFromPipelineByPropertyName = true)]
-    public PSBicepDocument? InputObject { get; set; }
+    public PSBicepDocument? DocumentObject { get; set; }
 
     protected override void ProcessRecord()
     {
-        if (InputObject == null) { throw new ArgumentNullException(nameof(InputObject)); }
-        string document = InputObject.ConvertToDocument();
+        if (DocumentObject == null) { throw new ArgumentNullException(nameof(DocumentObject)); }
+        string document = DocumentObject.ConvertToDocument();
         WriteObject(document) ;
     }
 }
