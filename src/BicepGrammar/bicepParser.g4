@@ -41,7 +41,7 @@ modulePath: stringValue;
 //value
 value
   : valueExpression
-  | stringValue  
+  | stringValue
   | numberValue
   | boolValue
   | arrayValue
@@ -49,15 +49,24 @@ value
 ;
 
 valueExpression
-  : function POINT valueExpression
-  | variable POINT valueExpression
+  : function POINT memberExpression
+  | reference POINT memberExpression
   | function
-  | variable
+  | reference
 ;
 
-variable: IDENTIFIER (OPENSQUARE value CLOSESQUARE)?;
+memberExpression   
+  : function POINT memberExpression
+  | member POINT memberExpression
+  | function
+  | member
+;
 
-function: IDENTIFIER OPENPARENTHESIS (functionParameter ( COMMA functionParameter)*)* CLOSEPARENTHESIS;
+member: identifier;
+
+reference: identifier (OPENSQUARE value CLOSESQUARE)?;
+
+function: identifier OPENPARENTHESIS (functionParameter ( COMMA functionParameter)*)* CLOSEPARENTHESIS;
 
 functionParameter: value;
 
@@ -65,8 +74,8 @@ stringValue: OPEN_STRING ( ENTER_INTERPOLATION value CLOSEGRAPH | TEXT )* CLOSE_
 boolValue: BOOLEAN;
 numberValue: NUMBER;
 
-arrayValue: OPENSQUARE value+ CLOSESQUARE ;
-objectValue: OPENGRAPH property+ CLOSEGRAPH ;
+arrayValue: OPENSQUARE value* CLOSESQUARE ;
+objectValue: OPENGRAPH property* CLOSEGRAPH ;
 
 property: propertyName COLON value ;
-propertyName: IDENTIFIER|stringValue;
+propertyName: identifier|stringValue;

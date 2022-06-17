@@ -6,13 +6,13 @@ $request = Invoke-WebRequest -Uri $url
 $content = $request.content
 
 # Convert to a bicep powershell object
-$bicepDocument = $content|convertfrom-bicepDocument
+$bicepDocument = $content|convertfrom-PSBicepDocument
 
 $bicepDocument
 
 # Add a new bicep Param
-$paramnew = new-BicepParam -Identifier 'theParam' -Type 'string'
+$paramnew = new-PSBicepParam -Identifier 'theParam' -Type 'string'
 $bicepDocument.Params+=$paramnew
 
 # Convert to bicep string
-$bicepDocument|convertto-BicepDocument
+$bicepDocument|convertto-PSBicepDocument

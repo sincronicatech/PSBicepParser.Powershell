@@ -2,8 +2,8 @@ src/BicepGrammar/GeneratedCode/**
 src/BicepGrammar/.antlr/**
 
 
-src/BicepParser.Powershell/obj/**
-src/BicepParser.Powershell/bin/**
+src/PSBicepParser.Powershell/obj/**
+src/PSBicepParser.Powershell/bin/**
 
 
 **/*.user
