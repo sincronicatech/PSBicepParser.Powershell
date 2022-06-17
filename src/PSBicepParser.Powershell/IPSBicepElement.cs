@@ -1,7 +1,7 @@
-namespace BicepParser.Powershell;
-
-internal interface IPSBicepElement
+namespace BicepParser.Powershell
 {
-    string ConvertToDocument();
-    public string[] ReferredIdentifiers {  get; }
+    public interface IPSBicepElement
+    {
+        string ConvertToDocument();
+    }
 }

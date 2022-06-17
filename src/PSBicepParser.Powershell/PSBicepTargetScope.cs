@@ -2,7 +2,7 @@ using System;
 
 namespace BicepParser.Powershell;
 
-public class PSBicepTargetScope:PSBicepElementBase
+public class PSBicepTargetScope: IPSBicepElement
 {
     public PSBicepTargetScope(string targetScope)
     {
@@ -32,7 +32,7 @@ public class PSBicepTargetScope:PSBicepElementBase
             }
         }
     }
-    public override string ConvertToDocument()
+    public string ConvertToDocument()
     {
         return $"targetScope = {Scope}";
     }

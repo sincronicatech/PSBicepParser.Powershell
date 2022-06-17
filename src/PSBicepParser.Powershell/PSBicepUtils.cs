@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using Antlr4.Runtime;
@@ -25,24 +26,26 @@ internal class PSBicepUtils
         return document;
     }
 
-    internal static string Convert(Hashtable hashtable){
+    internal static string Convert(Hashtable hashtable)
+    {
         var sb = new StringBuilder();
         sb.AppendLine("{");
         Regex lineAdder = new Regex("\n");
-        foreach(var key in hashtable.Keys){
+        foreach (var key in hashtable.Keys)
+        {
             string valueToAdd;
-            switch(hashtable[key])
+            switch (hashtable[key])
             {
                 case Hashtable hs:
-                    if(hs.Count == 0) continue;
-                    valueToAdd = lineAdder.Replace(Convert(hs),"\n  ");
+                    if (hs.Count == 0) continue;
+                    valueToAdd = lineAdder.Replace(Convert(hs), "\n  ");
                     break;
                 case object[] ar:
-                    if(ar.Length == 0) continue;
-                    valueToAdd = lineAdder.Replace(Convert(ar),"\n  ");
+                    if (ar.Length == 0) continue;
+                    valueToAdd = lineAdder.Replace(Convert(ar), "\n  ");
                     break;
                 default:
-                    if(hashtable[key]==null) continue;
+                    if (hashtable[key] == null) continue;
                     valueToAdd = Convert(hashtable[key]);
                     break;
             }
@@ -53,22 +56,24 @@ internal class PSBicepUtils
         return sb.ToString();
     }
 
-    internal static string Convert(object[] array){
+    internal static string Convert(object[] array)
+    {
         var sb = new StringBuilder();
         sb.AppendLine("[");
         Regex lineAdder = new Regex("\n");
-        foreach(var element in array){
+        foreach (var element in array)
+        {
             string valueToAdd;
-            switch(element)
+            switch (element)
             {
                 case Hashtable hs:
-                    valueToAdd = lineAdder.Replace(Convert(hs),"\n  ");
+                    valueToAdd = lineAdder.Replace(Convert(hs), "\n  ");
                     break;
                 case object[] ar:
-                    valueToAdd = lineAdder.Replace(Convert(ar),"\n  ");
+                    valueToAdd = lineAdder.Replace(Convert(ar), "\n  ");
                     break;
                 default:
-                    valueToAdd =  Convert(element);
+                    valueToAdd = Convert(element);
                     break;
             }
             sb.AppendLine($"  {valueToAdd}");
@@ -80,7 +85,7 @@ internal class PSBicepUtils
 
     internal static string Convert(object value)
     {
-        switch(value)
+        switch (value)
         {
             case Hashtable hs:
                 return Convert(hs);
@@ -92,4 +97,21 @@ internal class PSBicepUtils
                 return value.ToString();
         }
     }
+
+    internal static string[] GetReferences(string bicepStringDocument)
+    {
+
+            AntlrInputStream inputStream = new AntlrInputStream(bicepStringDocument);
+
+            var lexer = new bicepLexer(inputStream);
+            CommonTokenStream commonTokenStream = new CommonTokenStream(lexer);
+            var parser = new bicepParser(commonTokenStream);
+            var startContext = parser.bicep();
+            var identifierVisitor = new BicepReferenceVisitor();
+            identifierVisitor.Visit(startContext);
+
+            return identifierVisitor.references.ToArray<string>();
+        
+    }
+
 }

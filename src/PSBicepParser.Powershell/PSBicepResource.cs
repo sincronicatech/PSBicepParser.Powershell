@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace BicepParser.Powershell;
 
-public class PSBicepResource:PSBicepElementBase
+public class PSBicepResource:IPSBicepObject
 {
     public PSBicepResource(string identifier, string resourceType, string name)
     {
@@ -12,8 +12,8 @@ public class PSBicepResource:PSBicepElementBase
         Name = name;
     }
 
-    public string Identifier { get; }
-    public string ResourceType { get; }
+    public string Identifier { get; set; }
+    public string ResourceType { get; set; }
     public string Name { get; set; }
     public string? Parent { get; set; }
     public object[] DependsOn { get; set; } = new object[0];
@@ -40,7 +40,7 @@ public class PSBicepResource:PSBicepElementBase
         }
     }
 
-    public override string ConvertToDocument()
+    public string ConvertToDocument()
     {
         var newHashtable = (Hashtable)Attributes.Clone();
         newHashtable.Add("name", Name);
