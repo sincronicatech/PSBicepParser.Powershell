@@ -1,9 +1,7 @@
-# Bicep Converter for Powershell
-Bicep Converter for Powershell.
+# PSBicepParser.Powershell module to parse Azure Bicep files
+Powershell parser for Azure Bicep files. It makes easier parsing Bicep files. To be used in CI/CD pipeline that needs to manipulate an Azure Bicep file before deploying.
 
-The module aims to parse a Bicep file to a Powershell object and viceversa to simplify the manipulation of Bicep files on CI/CD pipelines.
-
-The module exposes the following cmdLets:
+Cmdlets in the module:
 
 - ### New-PSBicepDocument
 

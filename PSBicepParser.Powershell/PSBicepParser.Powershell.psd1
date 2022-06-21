@@ -30,7 +30,7 @@ CompanyName = 'Sincronica'
 # Copyright = '(c) Daniele Francioni. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'Powershell parser for Azure Bicep files. It makes easier parsing Bicep files. To be used in CI/CD pipeline that needs to manipulate an Azure Bicep file before deploying.'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -72,7 +72,18 @@ NestedModules = @('bin\PSBicepParser.Powershell.dll')
 FunctionsToExport = ''
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = '*'
+CmdletsToExport = @(
+    "New-PSBicepDocument", 
+    "New-PSBicepModule",
+    "New-PSBicepOutput",
+    "New-PSBicepParam",
+    "New-PSBicepResource",
+    "New-PSBicepTargetScope",
+    "ConvertFrom-PSBicepDocument",
+    "ConvertTo-PSBicepDocument",
+    "Get-PSBicepReference",
+    "Resolve-PSBicepReference"
+    )
 
 # Variables to export from this module
 VariablesToExport = '*'
@@ -95,13 +106,17 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @(
+            'PSEdition_Core',
+            'Windows',
+            'Linux'
+        )
 
         # A URL to the license for this module.
         # LicenseUri = ''
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/sincronicatech/PSBicepParser.Powershell'
 
         # A URL to an icon representing this module.
         # IconUri = ''
