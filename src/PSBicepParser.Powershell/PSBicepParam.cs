@@ -11,9 +11,9 @@ public class PSBicepParam:IPSBicepObject
 
     public string Identifier { get; set; }
     public string Type { get; set; }
-    public object? DefaultValue { get; internal set; }
+    public object? DefaultValue { get; set; }
     public string ElementType => "Param";
-    public string[] Decorators { get; internal set; } = new string[0];
+    public string[] Decorators { get; set; } = new string[0];
 
     public string ConvertToDocument()
     { 
