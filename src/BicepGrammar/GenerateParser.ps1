@@ -22,11 +22,11 @@ $bicepGrammar = Get-Item "./bicepParser.g4"
 java --class-path $antlrJarFile org.antlr.v4.Tool -Dlanguage=CSharp $bicepLexerGrammar.FullName -o ./GeneratedCode -no-listener -no-visitor
 java --class-path $antlrJarFile org.antlr.v4.Tool -Dlanguage=CSharp $bicepGrammar.FullName -o ./GeneratedCode -visitor 
 
-if(Test-Path ../PSBicepParser.Powershell/parser)
+if(Test-Path ../PSBicepParser/parser)
 {
-    Remove-Item -Force ../PSBicepParser.Powershell/parser -Recurse -Confirm:$false
+    Remove-Item -Force ../PSBicepParser/parser -Recurse -Confirm:$false
 }
-mkdir ../PSBicepParser.Powershell/parser |Out-Null
-Move-Item ./GeneratedCode/*.cs ../PSBicepParser.Powershell/parser -Force
+mkdir ../PSBicepParser/parser |Out-Null
+Move-Item ./GeneratedCode/*.cs ../PSBicepParser/parser -Force
 
 Pop-Location

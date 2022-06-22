@@ -4,7 +4,7 @@
 			"path": "src/BicepGrammar"
 		},
 		{
-			"path": "src/PSBicepParser.Powershell"
+			"path": "src/PSBicepParser"
 		},
 		{
 			"path": "."

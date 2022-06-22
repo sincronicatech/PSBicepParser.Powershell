@@ -1,4 +1,4 @@
-# PSBicepParser.Powershell module to parse Azure Bicep files
+# PSBicepParser module to parse Azure Bicep files
 Powershell parser for Azure Bicep files. It makes easier parsing Bicep files. To be used in CI/CD pipeline that needs to manipulate an Azure Bicep file before deploying.
 
 Cmdlets in the module:
@@ -51,7 +51,7 @@ Given an identifier and a parsed Bicep document, returns the element referred by
 ## Example
 
 ``` powershell
-Import-module .\src\PSBicepParser.Powershell\bin\Debug\netstandard2.0\publish\PSBicepParser.Powershell.dll 
+Import-module .\src\PSBicepParser\bin\Debug\netstandard2.0\publish\PSBicepParser.dll 
 # reading the api management bicep quickstart
 $url = 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.apimanagement/azure-api-management-create/main.bicep'
 $request = Invoke-WebRequest -Uri $url
