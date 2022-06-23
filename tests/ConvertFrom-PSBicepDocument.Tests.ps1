@@ -1,4 +1,5 @@
-Import-module ..\output\PSBicepParser\
+Import-module $PSScriptRoot\..\output\PSBicepParser\
+
 
 # reading the api management bicep quickstart
 $url = 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.apimanagement/azure-api-management-create/main.bicep'
