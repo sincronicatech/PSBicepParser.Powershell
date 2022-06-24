@@ -1,0 +1,14 @@
+name: GitHub Actions Demo
+on:
+  push:
+    # Pattern matched against refs/tags
+    tags:        
+      - '**'   
+jobs:
+  buildModule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build the module
+        shell: pwsh
+        run: |
+          ./build.ps1
