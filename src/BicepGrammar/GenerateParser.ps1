@@ -2,7 +2,7 @@ Write-host "Generating parser using Antlr"
 
 Push-Location $PSScriptRoot
 $antlJarName = 'antlr-4.10.1-complete.jar'
-$antlrJarFile = "$env:TMP/$antlJarName"
+$antlrJarFile = [IO.Path]::GetTempPath() + $antlJarName
 if(-not (Test-Path $antlrJarFile))
 {
     $antlrJarUri = "https://www.antlr.org/download/$antlJarName"
