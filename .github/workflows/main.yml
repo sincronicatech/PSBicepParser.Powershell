@@ -16,3 +16,10 @@ jobs:
         shell: pwsh
         run: |
           ./build.ps1 -version '${{ steps.vars.outputs.tag }}'
+      - name: Set Env Api Key
+        env:
+          NUGET_KEY: ${{ secrets.PSGALLERYAPIKEY }}
+      - name: Publish in PowershellGallery
+        shell: pwsh
+        run: |
+          Publish-Module -path ./jtAz -NuGetApiKey $env:NUGET_KEY -Verbose 
