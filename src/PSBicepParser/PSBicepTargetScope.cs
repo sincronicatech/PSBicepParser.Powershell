@@ -23,10 +23,10 @@ public class PSBicepTargetScope: IPSBicepElement
         {
             switch (value)
             {
-                case "resourceGroup":
-                case "subscription":
-                case "managementGroup":
-                case "tenant":
+                case "'resourceGroup'":
+                case "'subscription'":
+                case "'managementGroup'":
+                case "'tenant'":
                     targetScopeProperty = value;
                     break;
                 default:

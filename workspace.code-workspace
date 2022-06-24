@@ -1,14 +1,15 @@
 {
 	"folders": [
 		{
+			"path": "."
+		},
+		{
 			"path": "src/BicepGrammar"
 		},
 		{
 			"path": "src/PSBicepParser"
-		},
-		{
-			"path": "."
 		}
+
 	],
 	"settings": {},
 	"launch": {

@@ -1,3 +1,4 @@
+Import-module $PSScriptRoot\..\output\PSBicepParser\
 
 Describe 'New-PSBicepDocument' {
     It 'Returns an Bicep Document' {
@@ -10,7 +11,7 @@ Describe 'New-PSBicepDocument' {
     It 'Returns an Bicep Document with a custom targetScope' {
         $document = New-PSBicepDocument
         $document.targetScope = New-PSBicepTargetScope -Scope '''subscription'''
-        $document.AllObjects.Count | Should -Be 1
+        $document.AllObjects.Count | Should -Be 0
         $document.TargetScope.Scope | Should -Be '''subscription'''
     }
 }
