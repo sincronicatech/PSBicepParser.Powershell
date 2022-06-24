@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Build module
 on:
   push:
     tags:        
@@ -9,8 +9,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+      - name: Parse output tag
+        id: vars
+        run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
       - name: Build the module
         shell: pwsh
         run: |
-          ./build.ps1 -version '${GITHUB_REF##*/}'
+          ./build.ps1 -version '${{ steps.vars.outputs.tag }}'
