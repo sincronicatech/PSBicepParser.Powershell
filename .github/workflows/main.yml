@@ -16,18 +16,8 @@ jobs:
         shell: pwsh
         run: |
           ./build.ps1 -version '${{ steps.vars.outputs.tag }}'
-
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Release
+        uses: softprops/action-gh-release@v1
         with:
-          repo_token: ${{ github.token }}
-          automatic_release_tag: ${{ steps.vars.outputs.tag }}
-          prerelease: true
-          title: ${{ steps.vars.outputs.tag }}
-          body: |
-            Automatic release
           files: |
             ./output/PSBicepParser/*
-#      - name: Publish in PowershellGallery
-#        shell: pwsh
-#        run: |
-#          Publish-Module -path ./output/PSBicepParser -NuGetApiKey '${{ secrets.PSGALLERYAPIKEY }}' -Verbose 
