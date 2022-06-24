@@ -26,7 +26,7 @@ jobs:
           tag_name: ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
-      - name: Publish in PowershellGallery
-        shell: pwsh
-        run: |
-          Publish-Module -path ./output/PSBicepParser -NuGetApiKey '${{ secrets.PSGALLERYAPIKEY }}' -Verbose 
+#      - name: Publish in PowershellGallery
+#        shell: pwsh
+#        run: |
+#          Publish-Module -path ./output/PSBicepParser -NuGetApiKey '${{ secrets.PSGALLERYAPIKEY }}' -Verbose 
