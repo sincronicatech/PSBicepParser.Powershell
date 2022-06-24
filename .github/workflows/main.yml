@@ -16,14 +16,17 @@ jobs:
         shell: pwsh
         run: |
           ./build.ps1 -version '${{ steps.vars.outputs.tag }}'
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - name: Create a Release
+        uses: softprops/action-gh-release@v1
         with:
-          repo_token: ${{ github.token }}
-          automatic_release_tag: ${{ steps.vars.outputs.tag }}
+          # note you'll typically need to create a personal access token
+          # with permissions to create releases in the other repo
           prerelease: true
-          title: ${{ steps.vars.outputs.tag }}
+          name: ${{ github.token }}
+          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
           files: |
             ./output/PSBicepParser/*
+
 #      - name: Publish in PowershellGallery
 #        shell: pwsh
 #        run: |
