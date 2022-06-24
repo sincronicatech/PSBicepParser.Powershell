@@ -11,7 +11,7 @@ public class NewBicepTargetScope : PSCmdlet
     [Parameter(
         Mandatory = true,
         Position = 0)]
-    [ValidateSet("resourceGroup", "subscription", "managementGroup", "tenant")]
+    [ValidateSet("'resourceGroup'", "'subscription'", "'managementGroup'", "'tenant'")]
     public string? Scope { get; set; }
 
     protected override void ProcessRecord()

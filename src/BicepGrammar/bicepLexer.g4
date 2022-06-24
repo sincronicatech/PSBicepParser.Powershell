@@ -53,7 +53,7 @@ mode STRINGMODE;
 
 ESCAPED_APEX : '\\\'';
 ESCAPED_DOLLAR: '\\$';
-TEXT: (~['$]|ESCAPED_APEX|ESCAPED_DOLLAR)+; 
+TEXT: (~['$]|[$]~['{]|ESCAPED_APEX|ESCAPED_DOLLAR)+; 
 
 CLOSE_STRING: '\'' -> popMode; 
 
