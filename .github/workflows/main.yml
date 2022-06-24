@@ -16,16 +16,14 @@ jobs:
         shell: pwsh
         run: |
           ./build.ps1 -version '${{ steps.vars.outputs.tag }}'
-      - name: Create release
-        uses: actions/create-release@v1
-        id: create_release
+      - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-          draft: false
+          repo_token: ${{ github.token }}
+          automatic_release_tag: ${{ steps.vars.outputs.tag }}
           prerelease: true
-          release_name: ${{ steps.vars.outputs.tag }}
-          tag_name: ${{ github.ref }}
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+          title: ${{ steps.vars.outputs.tag }}
+          files: |
+            ./output/PSBicepParser/*
 #      - name: Publish in PowershellGallery
 #        shell: pwsh
 #        run: |
