@@ -22,10 +22,16 @@ jobs:
           # note you'll typically need to create a personal access token
           # with permissions to create releases in the other repo
           prerelease: true
-          name: ${{ github.token }}
-          token: ${{ secrets.CUSTOM_GITHUB_TOKEN }}
+          name: ${{ steps.vars.outputs.tag }}
+          token: ${{ github.token }}
           files: |
             ./output/PSBicepParser/*
+#      - uses: "marvinpinto/action-automatic-releases@latest"
+#        with:
+#          repo_token: ${{ github.token }}
+#          automatic_release_tag: ${{ steps.vars.outputs.tag }}
+#          prerelease: true
+#          title: ${{ steps.vars.outputs.tag }}
 
 #      - name: Publish in PowershellGallery
 #        shell: pwsh
