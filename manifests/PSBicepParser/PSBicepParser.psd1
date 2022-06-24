@@ -116,7 +116,7 @@ PrivateData = @{
         # LicenseUri = ''
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/sincronicatech/PSBicepParser'
+        ProjectUri = 'https://github.com/sincronicatech/powershell-psbicepparser'
 
         # A URL to an icon representing this module.
         # IconUri = ''
