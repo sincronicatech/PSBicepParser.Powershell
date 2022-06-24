@@ -19,4 +19,4 @@ jobs:
       - name: Publish in PowershellGallery
         shell: pwsh
         run: |
-          Publish-Module -path ./jtAz -NuGetApiKey '${{ secrets.PSGALLERYAPIKEY }}' -Verbose 
+          Publish-Module -path ./output/PSBicepParser -NuGetApiKey '${{ secrets.PSGALLERYAPIKEY }}' -Verbose 
