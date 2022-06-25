@@ -1,0 +1,27 @@
+name: Release - Publish on PowershellGallery
+on:
+  release:
+    types: [released]
+jobs:
+  publish-powershellgallery:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: robinraju/release-downloader@v1.4
+      with: 
+        tag: "${{ github.event.release.tag_name }}"
+        fileName: "PSBicepParser.zip"
+        tarBall: false
+        zipBall: false
+        
+    - name: Publishing
+      run: |
+        Expand-Archive ./PSBicepParser.zip ./filesToPublish
+        
+        Set-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
+        Import-LocalizedData -BaseDirectory "./filesToPublish/PSBicepParser" -FileName "PSBicepParser.psd1" -BindingVariable manifest
+        foreach($moduleName in $manifest.RequiredModules){
+            Install-Module -Name $moduleName -Force -Confirm:$false
+        }
+
+        Publish-Module -Path './filesToPublish/PSBicepParser' -NuGetApiKey ${{ secrets.PSGALLERYAPIKEY }}
+      shell: pwsh
