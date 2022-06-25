@@ -18,4 +18,5 @@ if($null -ne $version)
 {
     Update-ModuleManifest -Path "$PSScriptRoot\output\$module\$module.psd1" -ModuleVersion $version
 }
+Compress-Archive "./output/$module/" "./output/$module.zip"
 Pop-Location
