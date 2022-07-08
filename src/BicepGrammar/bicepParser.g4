@@ -7,32 +7,32 @@ options {   tokenVocab = bicepLexer; }
 bicep
   : targetScope? ( resource | param | module | output)+;
 
-module: MODULE identifier modulePath EQUAL objectValue;
+module: Module identifier modulePath Equal objectValue;
 
-output: OUTPUT identifier type EQUAL value;
+output: Output identifier type Equal value;
 
 //TargetScope
-targetScope: TARGETSCOPE EQUAL scope;
+targetScope: TargetScope Equal scope;
 
 scope : stringValue;
 
 //Param
-param: decorator* PARAM identifier type ( EQUAL value )? ;
+param: decorator* Param identifier type ( Equal value )? ;
 
-decorator: ET valueExpression;
+decorator: Et valueExpression;
 
-identifier: IDENTIFIER;
+identifier: Identifier;
 
 type
-  : OBJECT
-  | STRING
-  | BOOL
-  | ARRAY
-  | INT
+  : Object
+  | String
+  | Bool
+  | Array
+  | Int
 ;
 
 //Resource
-resource: RESOURCE identifier resourceType EXISTING? EQUAL objectValue;
+resource: Resource identifier resourceType Existing? Equal objectValue;
 resourceType: stringValue;
 
 //Module
@@ -49,33 +49,33 @@ value
 ;
 
 valueExpression
-  : function POINT memberExpression
-  | reference POINT memberExpression
+  : function Point memberExpression
+  | reference Point memberExpression
   | function
   | reference
 ;
 
 memberExpression   
-  : function POINT memberExpression
-  | member POINT memberExpression
+  : function Point memberExpression
+  | member Point memberExpression
   | function
   | member
 ;
 
 member: identifier;
 
-reference: identifier (OPENSQUARE value CLOSESQUARE)?;
+reference: identifier (LeftSquareBracket value RightSquareBracket)?;
 
-function: identifier OPENPARENTHESIS (functionParameter ( COMMA functionParameter)*)* CLOSEPARENTHESIS;
+function: identifier LeftRoundBracket (functionParameter ( Comma functionParameter)*)* RightRoundBracket;
 
 functionParameter: value;
 
-stringValue: OPEN_STRING ( ENTER_INTERPOLATION value CLOSEGRAPH | TEXT )* CLOSE_STRING;
-boolValue: BOOLEAN;
-numberValue: NUMBER;
+stringValue: StringStart ( InterpolationStart value RightCurlyBracket | Text )* StringEnd;
+boolValue: BooleanValue;
+numberValue: Number;
 
-arrayValue: OPENSQUARE value* CLOSESQUARE ;
-objectValue: OPENGRAPH property* CLOSEGRAPH ;
+arrayValue: LeftSquareBracket value* RightSquareBracket ;
+objectValue: LeftCurlyBracket property* RightCurlyBracket ;
 
-property: propertyName COLON value ;
+property: propertyName Colon value ;
 propertyName: identifier|stringValue;
