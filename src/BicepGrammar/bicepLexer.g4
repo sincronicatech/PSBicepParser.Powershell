@@ -3,59 +3,58 @@ lexer grammar bicepLexer;
 /** Lexer rules **/
 //Tokens
 
-TARGETSCOPE: 'targetscope';
-PARAM: 'param';
-RESOURCE: 'resource';
-MODULE: 'module';
-OUTPUT: 'output';
+TargetScope: 'targetscope';
+Param: 'param';
+Resource: 'resource';
+Module: 'module';
+Output: 'output';
 
-EXISTING: 'existing';
+Existing: 'existing';
 
 
 
-STRING: 'string';
-BOOL: 'bool';
-INT: 'int';
-ARRAY: 'array';
-OBJECT: 'object';
+String: 'string';
+Bool: 'bool';
+Int: 'int';
+Array: 'array';
+Object: 'object';
 
-COLON: ':';
+Colon: ':';
 
-ET: '@';
-OPENSQUARE: '[';
-CLOSESQUARE: ']';
-OPENGRAPH: '{' -> pushMode(DEFAULT_MODE);
-CLOSEGRAPH: '}' -> popMode;
-SLASH: '/';
+Et: '@';
+LeftSquareBracket: '[';
+RightSquareBracket: ']';
+LeftCurlyBracket: '{' -> pushMode(DEFAULT_MODE);
+RightCurlyBracket: '}' -> popMode;
 
-COMMA: ',';
-OPENPARENTHESIS: '(';
-CLOSEPARENTHESIS: ')' ;
+Comma: ',';
+LeftRoundBracket: '(';
+RightRoundBracket: ')' ;
 
-POINT: '.';
+Point: '.';
 
-EQUAL: '=';
+Equal: '=';
 
-DOLLAR: '$';
+Dollar: '$';
 
-fragment DIGIT: [0-9];
+fragment Digit: [0-9];
 
-BOOLEAN: 'true' | 'false';
-NUMBER: DIGIT+;
+BooleanValue: 'true' | 'false';
+Number: Digit+;
 
-IDENTIFIER: [A-Za-z_][A-Za-z0-9_]*;
+Identifier: [A-Za-z_][A-Za-z0-9_]*;
 
-WS : [ \r\t\n]+ -> skip ; 
+WhiteSpace : [ \r\t\n]+ -> skip ; 
 
-OPEN_STRING: '\'' -> pushMode(STRINGMODE); 
+StringStart: '\'' -> pushMode(STRINGMODE); 
 
 mode STRINGMODE;
 
-ESCAPED_APEX : '\\\'';
-ESCAPED_DOLLAR: '\\$';
-TEXT: (~['$]|[$]~['{]|ESCAPED_APEX|ESCAPED_DOLLAR)+; 
+EscapedApex : '\\\'';
+EscapedDollar: '\\$';
+Text: (~['$]|[$]~['{]|EscapedApex|EscapedDollar)+; 
 
-CLOSE_STRING: '\'' -> popMode; 
+StringEnd: '\'' -> popMode; 
 
-ENTER_INTERPOLATION: '${' -> pushMode(DEFAULT_MODE); // When we see this, start parsing program tokens.
+InterpolationStart: '${' -> pushMode(DEFAULT_MODE); // When we see this, start parsing program tokens.
 
